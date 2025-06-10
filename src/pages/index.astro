@@ -24,6 +24,8 @@ interface Planet {
 }
 
 const allPlanets = Object.values(import.meta.glob<Planet>('../content/*.md', { eager: true }));
+
+console.log(`Found ${allPlanets.length} planets.`);
 ---
 
 <BaseLayout title="Distant Worlds - Planet Collection">
