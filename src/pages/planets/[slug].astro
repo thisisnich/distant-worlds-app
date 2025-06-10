@@ -33,21 +33,47 @@ export async function getStaticPaths() {
 }
 
 const { planet } = Astro.props as { planet: MarkdownModule };
+const slug = planet.frontmatter.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-*|-*$/g, '');
+const imageSlug = planet.frontmatter.name.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_*|_*$/g, '');
+const imagePath = `/images/${planet.frontmatter.planet_id.toString().padStart(3, '0')}_${imageSlug}.png`;
 ---
 
 <BaseLayout title={`Planet ${planet.frontmatter.planet_id}: ${planet.frontmatter.name}`}>
+    <div class="planet-hero" style={`background-image: url('${imagePath}')`}>
+    </div>
+
     <div class="container">
-        <h1>Planet #{planet.frontmatter.planet_id}: {planet.frontmatter.name}</h1>
-        <p><strong>Scientific Name:</strong> <em>{planet.frontmatter.scientific_name}</em></p>
-        <p><strong>Type:</strong> {planet.frontmatter.type}</p>
-        <p><strong>Biome:</strong> {planet.frontmatter.biome}</p>
-        <p><strong>Gravity Source:</strong> {planet.frontmatter.gravity_source}</p>
+        <div class="planet-header-card">
+            <div class="planet-id-detail">Planet #{planet.frontmatter.planet_id}</div>
+            <h1>{planet.frontmatter.name}</h1>
+            <p class="planet-subtitle"><em>{planet.frontmatter.scientific_name}</em></p>
+        </div>
 
-        <h2>Description</h2>
-        <p>{planet.frontmatter.description}</p>
+        <div class="planet-stats">
+            <div class="stat-item">
+                <span class="stat-label">Type</span>
+                <span class="stat-value">{planet.frontmatter.type}</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Biome</span>
+                <span class="stat-value">{planet.frontmatter.biome}</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Gravity Source</span>
+                <span class="stat-value">{planet.frontmatter.gravity_source}</span>
+            </div>
+        </div>
 
-        <h2>Lore</h2>
-        {planet.compiledContent()}
+        <div class="content-card">
+            <h2>Description</h2>
+            <p>{planet.frontmatter.description}</p>
+        </div>
 
+        <div class="content-card">
+            <h2>Lore</h2>
+            <div class="planet-content">
+                {planet.compiledContent()}
+            </div>
+        </div>
     </div>
 </BaseLayout> 
