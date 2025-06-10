@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface PlanetFrontmatter {
+    planet_id: string;
+    name: string;
+    scientific_name: string;
+    type: string;
+    biome: string;
+    gravity_source: string;
+    nickname: string;
+    atmosphere_type: string;
+    primary_resources: string[];
+    scientific_interest: string[];
+    habitability: string;
+    year_length_days: number;
+    day_length_hours: number;
+    description: string;
+}
+
+interface Planet {
+    frontmatter: PlanetFrontmatter;
+    compiledContent(): string;
+}
+
+const allPlanets = Object.values(import.meta.glob<Planet>('../content/*.md', { eager: true }));
+---
+
+<BaseLayout title="Distant Worlds - Planet Collection">
+    <div class="container">
+        <h1>Our Planet Collection</h1>
+        <div class="card-grid">
+            {
+                allPlanets.map((planet) => {
+                    const slug = planet.frontmatter.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-*|-*$/g, '');
+                    return (
+                        <div class="card">
+                            <h2><a href={`/planets/${slug}`}>{planet.frontmatter.name}</a></h2>
+                            <p><strong>Type:</strong> {planet.frontmatter.type}</p>
+                            <p><strong>Biome:</strong> {planet.frontmatter.biome}</p>
+                            <p>{planet.frontmatter.description}</p>
+                        </div>
+                    );
+                })
+            }
+        </div>
+    </div>
+</BaseLayout>

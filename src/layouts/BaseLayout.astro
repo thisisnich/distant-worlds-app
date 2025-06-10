@@ -1,0 +1,89 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<style is:global>
+			:root {
+				--accent: 136, 58, 234;
+				--accent-light: 224, 204, 250;
+				--accent-dark: 49, 10, 101;
+				--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
+			}
+			html {
+				font-family: system-ui, sans-serif;
+				background-color: #F6F6F6;
+			}
+			code {
+				font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+			}
+			body {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding: 2rem;
+				background: #0d1117; /* Dark background */
+				color: #c9d1d9; /* Light text */
+			}
+			h1, h2, h3, h4, h5, h6 {
+				color: #e4e6e8; /* Slightly lighter headings */
+			}
+			.container {
+				max-width: 960px;
+				width: 100%;
+				margin: 0 auto;
+				padding: 1rem;
+			}
+			.card-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 1.5rem;
+			}
+			.card {
+				background-color: #161b22; /* Darker card background */
+				border: 1px solid #30363d; /* Subtle border */
+				border-radius: 8px;
+				padding: 1.5rem;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+				transition: transform 0.2s ease-in-out;
+			}
+			.card:hover {
+				transform: translateY(-5px);
+			}
+			.card h2 {
+				margin-top: 0;
+				color: #58a6ff; /* Accent color for card titles */
+			}
+			.card p {
+				color: #a7afba; /* Slightly muted text */
+			}
+			.card a {
+				color: #58a6ff;
+				text-decoration: none;
+				font-weight: bold;
+			}
+			.card a:hover {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html> 
