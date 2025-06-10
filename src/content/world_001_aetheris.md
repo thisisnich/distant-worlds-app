@@ -21,14 +21,19 @@ habitability: Conditionally habitable on outer shell; breathable atmosphere and 
 
 year_length_days: 412
 day_length_hours: 31.6
-description: "Aetheris is a hollow, shifting planet suspended in orbit by a mysterious graviton core — defying orbital physics. Its blue-violet surface twists endlessly, hiding answers no species has ever recovered. First render set now live."
+description: "Aetheris is a hollow, shifting planet suspended in orbit by a mysterious graviton core — defying orbital physics. Its blue-violet surface twists endlessly, hiding answers no species has ever recovered."
 ---
 
 # Planet #001: Aetheris
 **Scientific Name:** *Aetheris Invertum*  
 **Type:** Hollow-Core Terrestrial  
 **Biome:** Cloud-Wreathed Continental Shell  
-**Gravity Source:** Gravity mechanism  
+**Gravity Source:** Central Graviton Core  
+
+---
+
+## Description (for reels & quick viewing)
+Aetheris is a hollow, shifting planet suspended in orbit by a mysterious graviton core — defying orbital physics. Its blue-violet surface twists endlessly, hiding answers no species has ever recovered.
 
 ---
 

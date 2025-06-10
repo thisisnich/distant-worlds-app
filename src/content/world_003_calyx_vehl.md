@@ -18,6 +18,7 @@ scientific_interest:
 habitability: Extremely hostile; surface uninhabitable due to constant storms and sub-zero temperatures; subterranean chambers theoretically habitable but psychologically devastating to most species
 year_length_days: 623
 day_length_hours: 28.4
+description: "Calyx-Vehl screams in harmony — a frozen world of singing glass where crystalline storms carve melodies into the ice, and the wind itself has become a living language."
 ---
 
 # Planet #003: Calyx-Vehl

@@ -18,6 +18,7 @@ scientific_interest:
 habitability: Hostile to most life forms due to sulfuric atmosphere and extreme heat; habitable only in deep ravine systems with specialized adaptation
 year_length_days: 847
 day_length_hours: 19.3
+description: "Solithar burns gold by day and glows amber by night — a desert world where light itself has become currency for the silent civilization dwelling in its glowing ravines."
 ---
 
 # Planet #002: Solithar
