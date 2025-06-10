@@ -61,6 +61,7 @@ console.log(`Found ${allPlanets.length} planets.`);
                         const slug = planet.frontmatter.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-*|-*$/g, '');
                         return (
                             <div class="card">
+                                <div class="planet-id">Planet #{planet.frontmatter.planet_id}</div>
                                 <h2><a href={`/planets/${slug}`}>{planet.frontmatter.name}</a></h2>
                                 <p><strong>Type:</strong> {planet.frontmatter.type}</p>
                                 <p><strong>Biome:</strong> {planet.frontmatter.biome}</p>
