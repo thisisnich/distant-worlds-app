@@ -38,17 +38,13 @@ const imageSlug = planet.frontmatter.name.toLowerCase().replace(/[^a-z0-9]+/g, '
 const imagePath = `/images/${planet.frontmatter.planet_id.toString().padStart(3, '0')}_${imageSlug}.png`;
 
 // Get the full compiled markdown content
-const fullContent = String(planet.compiledContent());
+const fullContent = await planet.compiledContent();
 
 // Define the header to search for
-const extendedLoreHeader = '<h2>Extended Lore (worldbuilding &#x26; deeper reading)</h2>';
+const extendedLoreHeader = '<h2 id="extended-lore-worldbuilding--deeper-reading">Extended Lore (worldbuilding &#x26; deeper reading)</h2>';
 
 // Find the start of the extended lore section
 const startIndex = fullContent.indexOf(extendedLoreHeader);
-
-console.log('Full Content:', fullContent);
-console.log('Extended Lore Header:', extendedLoreHeader);
-console.log('Start Index:', startIndex);
 
 let filteredContent = '';
 if (startIndex !== -1) {
@@ -57,6 +53,11 @@ if (startIndex !== -1) {
     // Replace the extended lore header with the desired "Lore:" header
     filteredContent = filteredContent.replace(extendedLoreHeader, '<h2>Lore:</h2>');
 }
+
+// Remove debugging console logs
+// console.log('Full Content (after await):', fullContent);
+// console.log('Extended Lore Header:', extendedLoreHeader);
+// console.log('Start Index:', startIndex);
 ---
 
 <BaseLayout title={`Planet ${planet.frontmatter.planet_id}: ${planet.frontmatter.name}`}>
