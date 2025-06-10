@@ -15,10 +15,18 @@
         <li>Created `implementation.md` to explain the project structure.</li>
         <li>Created this `progress.html` file.</li>
     </ul>
+    <h2>Implementation Details</h2>
+    <ul>
+        <li>Implemented slug-based routing for planet pages.</li>
+        <li>Renamed `src/pages/planets/[id].astro` to `src/pages/planets/[slug].astro`.</li>
+        <li>Corrected `import.meta.glob` paths in `src/pages/index.astro` and `src/pages/planets/[slug].astro` to correctly locate markdown files after `content` moved to `src`.</li>
+        <li>Updated styling in `src/layouts/BaseLayout.astro` based on `index.html` inspiration.</li>
+        <li>Refactored `src/pages/index.astro` to incorporate hero section, info cards, and footer for improved layout.</li>
+    </ul>
     <h2>Next Steps</h2>
     <ul>
-        <li>Develop Astro pages to display planet data from markdown files.</li>
-        <li>Implement dynamic routing for individual planet pages.</li>
+        <li>Add a starry background to the index page.</li>
+        <li>refactor md files to use markdown and be consistent</li>
     </ul>
 </body>
 </html> 

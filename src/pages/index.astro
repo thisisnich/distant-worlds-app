@@ -30,21 +30,50 @@ console.log(`Found ${allPlanets.length} planets.`);
 
 <BaseLayout title="Distant Worlds - Planet Collection">
     <div class="container">
-        <h1>Our Planet Collection</h1>
-        <div class="card-grid">
-            {
-                allPlanets.map((planet) => {
-                    const slug = planet.frontmatter.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-*|-*$/g, '');
-                    return (
-                        <div class="card">
-                            <h2><a href={`/planets/${slug}`}>{planet.frontmatter.name}</a></h2>
-                            <p><strong>Type:</strong> {planet.frontmatter.type}</p>
-                            <p><strong>Biome:</strong> {planet.frontmatter.biome}</p>
-                            <p>{planet.frontmatter.description}</p>
-                        </div>
-                    );
-                })
-            }
-        </div>
+        <header class="hero">
+            <h1 class="title">Distant Worlds</h1>
+            <p class="subtitle">Procedural Planet Collection</p>
+            <p class="tagline">Minted, not discovered.</p>
+        </header>
+
+        <section class="section">
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🌍 Weekly Drops</h3>
+                    <p>New procedurally generated planets every week</p>
+                </div>
+                <div class="info-card">
+                    <h3>📈 Dynamic Pricing</h3>
+                    <p>First claim sets the price, next planet costs $1 more</p>
+                </div>
+                <div class="info-card">
+                    <h3>🎨 100% Human-Made</h3>
+                    <p>Created with Blender, no AI generation</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="planets-section">
+            <h2 class="section-title">Available Worlds</h2>
+            <div id="planets-grid" class="planets-grid">
+                {
+                    allPlanets.map((planet) => {
+                        const slug = planet.frontmatter.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-*|-*$/g, '');
+                        return (
+                            <div class="card">
+                                <h2><a href={`/planets/${slug}`}>{planet.frontmatter.name}</a></h2>
+                                <p><strong>Type:</strong> {planet.frontmatter.type}</p>
+                                <p><strong>Biome:</strong> {planet.frontmatter.biome}</p>
+                                <p>{planet.frontmatter.description}</p>
+                            </div>
+                        );
+                    })
+                }
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2024 Distant Worlds. All renders are unique digital assets.</p>
+        </footer>
     </div>
 </BaseLayout>

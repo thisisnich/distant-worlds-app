@@ -15,6 +15,7 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 		<style is:global>
 			:root {
 				--accent: 136, 58, 234;
@@ -23,11 +24,10 @@ const { title } = Astro.props;
 				--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
 			}
 			html {
-				font-family: system-ui, sans-serif;
-				background-color: #F6F6F6;
-			}
-			code {
-				font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+				font-family: 'Inter', sans-serif;
+				background-color: #0d1117;
+				color: #c9d1d9;
+				overflow-x: hidden;
 			}
 			body {
 				margin: 0;
@@ -37,23 +37,97 @@ const { title } = Astro.props;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				padding: 2rem;
+				padding: 0;
 				background: #0d1117; /* Dark background */
 				color: #c9d1d9; /* Light text */
+				position: relative;
+				overflow: hidden;
 			}
 			h1, h2, h3, h4, h5, h6 {
+				font-family: 'Orbitron', sans-serif;
 				color: #e4e6e8; /* Slightly lighter headings */
 			}
+			.stars {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: transparent url('/stars.png') repeat;
+				z-index: -1;
+			}
 			.container {
-				max-width: 960px;
+				max-width: 1200px;
 				width: 100%;
 				margin: 0 auto;
-				padding: 1rem;
+				padding: 2rem;
+				position: relative;
+				z-index: 1;
 			}
-			.card-grid {
+			.hero {
+				text-align: center;
+				padding: 4rem 0;
+				color: #e4e6e8;
+			}
+			.hero .title {
+				font-family: 'Orbitron', sans-serif;
+				font-size: 4rem;
+				margin-bottom: 0.5rem;
+				text-shadow: 0 0 15px rgba(88, 166, 255, 0.6);
+			}
+			.hero .subtitle {
+				font-size: 1.8rem;
+				font-weight: 300;
+				margin-top: 0;
+				color: #a7afba;
+			}
+			.hero .tagline {
+				font-style: italic;
+				color: #58a6ff;
+				font-size: 1.2rem;
+			}
+			.info-section {
+				background: rgba(22, 27, 34, 0.7);
+				padding: 2.5rem 2rem;
+				border-radius: 10px;
+				margin-bottom: 3rem;
+				border: 1px solid #30363d;
+				backdrop-filter: blur(5px);
+			}
+			.info-grid {
 				display: grid;
 				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 				gap: 1.5rem;
+			}
+			.info-card {
+				text-align: center;
+				background: #161b22;
+				padding: 1.5rem;
+				border-radius: 8px;
+				border: 1px solid #30363d;
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+			}
+			.info-card h3 {
+				color: #58a6ff;
+				margin-top: 0;
+				font-size: 1.5rem;
+			}
+			.info-card p {
+				color: #a7afba;
+			}
+			.section-title {
+				font-family: 'Orbitron', sans-serif;
+				font-size: 2.5rem;
+				text-align: center;
+				margin-bottom: 2rem;
+				color: #e4e6e8;
+				text-shadow: 0 0 10px rgba(88, 166, 255, 0.4);
+			}
+			.planets-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 2rem;
+				margin-bottom: 3rem;
 			}
 			.card {
 				background-color: #161b22; /* Darker card background */
@@ -61,17 +135,24 @@ const { title } = Astro.props;
 				border-radius: 8px;
 				padding: 1.5rem;
 				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-				transition: transform 0.2s ease-in-out;
+				transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
 			}
 			.card:hover {
 				transform: translateY(-5px);
+				box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 			}
 			.card h2 {
 				margin-top: 0;
 				color: #58a6ff; /* Accent color for card titles */
+				font-size: 1.8rem;
+				margin-bottom: 0.5rem;
 			}
 			.card p {
 				color: #a7afba; /* Slightly muted text */
+				margin-bottom: 0.5rem;
 			}
 			.card a {
 				color: #58a6ff;
@@ -81,9 +162,88 @@ const { title } = Astro.props;
 			.card a:hover {
 				text-decoration: underline;
 			}
+			.footer {
+				text-align: center;
+				padding: 2rem;
+				border-top: 1px solid #30363d;
+				margin-top: 3rem;
+				color: #a7afba;
+				font-size: 0.9rem;
+			}
+			/* Modal Styles (basic - functionality not implemented by AI) */
+			.modal {
+				display: none; /* Hidden by default */
+				position: fixed; /* Stay in place */
+				z-index: 1000; /* Sit on top */
+				left: 0;
+				top: 0;
+				width: 100%; /* Full width */
+				height: 100%; /* Full height */
+				overflow: auto; /* Enable scroll if needed */
+				background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.modal-content {
+				background-color: #161b22;
+				margin: auto;
+				padding: 2rem;
+				border: 1px solid #30363d;
+				width: 80%;
+				max-width: 500px;
+				border-radius: 10px;
+				position: relative;
+				box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+			}
+			.close {
+				color: #aaa;
+				position: absolute;
+				top: 10px;
+				right: 20px;
+				font-size: 28px;
+				font-weight: bold;
+			}
+			.close:hover,
+			.close:focus {
+				color: #e4e6e8;
+				text-decoration: none;
+				cursor: pointer;
+			}
+			.form-group {
+				margin-bottom: 1rem;
+			}
+			.form-group label {
+				display: block;
+				margin-bottom: 0.5rem;
+				color: #a7afba;
+			}
+			.form-group input,
+			.form-group textarea {
+				width: calc(100% - 20px);
+				padding: 10px;
+				border: 1px solid #30363d;
+				border-radius: 5px;
+				background-color: #0d1117;
+				color: #c9d1d9;
+			}
+			.claim-btn-modal {
+				background-color: #58a6ff;
+				color: white;
+				padding: 10px 20px;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				font-size: 1rem;
+				transition: background-color 0.3s ease;
+			}
+			.claim-btn-modal:hover {
+				background-color: #79c0ff;
+			}
 		</style>
 	</head>
 	<body>
+		<div class="stars"></div>
 		<slot />
 	</body>
 </html> 
