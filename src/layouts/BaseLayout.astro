@@ -366,7 +366,6 @@ const { title } = Astro.props;
 			.container {
 				position: relative;
 				z-index: 10;
-				margin-top: 100vh;
 				background: transparent;
 				min-height: 100vh;
 			}
@@ -448,10 +447,43 @@ const { title } = Astro.props;
 				line-height: 1.8;
 				font-size: 1.1rem;
 			}
+			.planet-content h1 {
+				color: #e4e6e8; /* Adjusted for visibility within content card */
+				font-family: 'Orbitron', sans-serif;
+				font-size: 2.5rem;
+				margin-top: 1rem;
+				margin-bottom: 1rem;
+			}
 			.planet-content h2 {
 				color: #58a6ff;
 				margin-top: 2rem;
 				margin-bottom: 1rem;
+			}
+			.planet-content h3,
+			.planet-content h4,
+			.planet-content h5,
+			.planet-content h6 {
+				color: #e4e6e8;
+				margin-top: 1.5rem;
+				margin-bottom: 0.8rem;
+				font-family: 'Inter', sans-serif;
+				font-weight: 600;
+			}
+			.planet-content p {
+				margin-bottom: 1rem;
+			}
+			.planet-content strong {
+				color: #e4e6e8;
+				font-weight: 700;
+			}
+			.planet-content em {
+				color: #a7afba;
+				font-style: italic;
+			}
+			.planet-content hr {
+				border: none;
+				border-top: 1px dashed rgba(88, 166, 255, 0.5); /* Changed to dashed line for better visibility */
+				margin: 2.5rem 0;
 			}
 		</style>
 		<script is:inline>

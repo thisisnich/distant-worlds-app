@@ -37,18 +37,7 @@ description: "Brief, compelling one-sentence description for social media and qu
 
 ## Required Section Structure
 
-### 1. Planet Header
-```markdown
-# Planet #XXX: Planet Name
-**Scientific Name:** *Scientific Designation*  
-**Type:** Planet Classification  
-**Biome:** Primary Environment Type  
-**Gravity Source:** Gravity Mechanism Description  
-
----
-```
-
-### 2. Description Section
+### 1. Description Section
 ```markdown
 ## Description (for reels & quick viewing)
 [Brief, engaging description matching the frontmatter description field. 1-2 sentences max. Focus on visual impact and intrigue.]
@@ -56,7 +45,7 @@ description: "Brief, compelling one-sentence description for social media and qu
 ---
 ```
 
-### 3. Lore Section
+### 2. Lore Section
 ```markdown
 ## Lore (for posts)
 [Medium-length narrative content, 3-5 paragraphs. Include:
@@ -69,7 +58,7 @@ description: "Brief, compelling one-sentence description for social media and qu
 ---
 ```
 
-### 4. Extended Lore Section
+### 3. Extended Lore Section
 ```markdown
 ## Extended Lore (worldbuilding & deeper reading)
 [Detailed worldbuilding content, 4-7 paragraphs. Include:

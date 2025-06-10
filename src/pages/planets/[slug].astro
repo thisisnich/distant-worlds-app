@@ -36,6 +36,27 @@ const { planet } = Astro.props as { planet: MarkdownModule };
 const slug = planet.frontmatter.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-*|-*$/g, '');
 const imageSlug = planet.frontmatter.name.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_*|_*$/g, '');
 const imagePath = `/images/${planet.frontmatter.planet_id.toString().padStart(3, '0')}_${imageSlug}.png`;
+
+// Get the full compiled markdown content
+const fullContent = String(planet.compiledContent());
+
+// Define the header to search for
+const extendedLoreHeader = '<h2>Extended Lore (worldbuilding &#x26; deeper reading)</h2>';
+
+// Find the start of the extended lore section
+const startIndex = fullContent.indexOf(extendedLoreHeader);
+
+console.log('Full Content:', fullContent);
+console.log('Extended Lore Header:', extendedLoreHeader);
+console.log('Start Index:', startIndex);
+
+let filteredContent = '';
+if (startIndex !== -1) {
+    // Extract the content from the extended lore header onwards
+    filteredContent = fullContent.substring(startIndex);
+    // Replace the extended lore header with the desired "Lore:" header
+    filteredContent = filteredContent.replace(extendedLoreHeader, '<h2>Lore:</h2>');
+}
 ---
 
 <BaseLayout title={`Planet ${planet.frontmatter.planet_id}: ${planet.frontmatter.name}`}>
@@ -70,10 +91,7 @@ const imagePath = `/images/${planet.frontmatter.planet_id.toString().padStart(3,
         </div>
 
         <div class="content-card">
-            <h2>Lore</h2>
-            <div class="planet-content">
-                {planet.compiledContent()}
-            </div>
+            <div class="planet-content" set:html={filteredContent} />
         </div>
     </div>
 </BaseLayout> 

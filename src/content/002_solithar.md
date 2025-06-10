@@ -21,14 +21,6 @@ day_length_hours: 19.3
 description: "Solithar burns gold by day and glows amber by night — a desert world where light itself has become currency for the silent civilization dwelling in its glowing ravines."
 ---
 
-# Planet #002: Solithar
-**Scientific Name:** *Solithar Brimshalis*  
-**Type:** Dense Desert Terrestrial  
-**Biome:** Sulfuric Ravine Desert  
-**Gravity Source:** Standard planetary core with high-density mineral composition  
-
----
-
 ## Description (for reels & quick viewing)
 Solithar burns gold by day and glows amber by night — a desert world where light itself has become currency for the silent civilization dwelling in its glowing ravines.
 

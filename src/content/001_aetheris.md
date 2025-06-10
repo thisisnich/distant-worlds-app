@@ -24,14 +24,6 @@ day_length_hours: 31.6
 description: "Aetheris is a hollow, shifting planet suspended in orbit by a mysterious graviton core — defying orbital physics. Its blue-violet surface twists endlessly, hiding answers no species has ever recovered."
 ---
 
-# Planet #001: Aetheris
-**Scientific Name:** *Aetheris Invertum*  
-**Type:** Hollow-Core Terrestrial  
-**Biome:** Cloud-Wreathed Continental Shell  
-**Gravity Source:** Central Graviton Core  
-
----
-
 ## Description (for reels & quick viewing)
 Aetheris is a hollow, shifting planet suspended in orbit by a mysterious graviton core — defying orbital physics. Its blue-violet surface twists endlessly, hiding answers no species has ever recovered.
 

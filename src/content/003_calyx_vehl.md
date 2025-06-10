@@ -21,14 +21,6 @@ day_length_hours: 28.4
 description: "Calyx-Vehl screams in harmony — a frozen world of singing glass where crystalline storms carve melodies into the ice, and the wind itself has become a living language."
 ---
 
-# Planet #003: Calyx-Vehl
-**Scientific Name:** *Calyx-Vehl Resonantis*  
-**Type:** Glacial Resin Terrestrial  
-**Biome:** Storm-Carved Crystalline Tundra  
-**Gravity Source:** Standard planetary core with high-density resin-ice deposits  
-
----
-
 ## Description (for reels & quick viewing)
 Calyx-Vehl screams in harmony — a frozen world of singing glass where crystalline storms carve melodies into the ice, and the wind itself has become a living language.
 
