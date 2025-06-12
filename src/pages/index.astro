@@ -52,27 +52,162 @@ function isPlanetClaimed(planet: Planet): boolean {
             /* Remove the problematic inline style */
         }
         .claim-status {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9em;
-            margin-bottom: 8px;
+            background: rgba(22, 27, 34, 0.2);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            color: rgba(0, 212, 255, 0.6);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.85em;
+            margin-bottom: 12px;
             text-align: center;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            box-shadow: 
+                0 0 5px rgba(0, 212, 255, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
+        
+        .claim-status::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+            opacity: 0;
+        }
+        
+        .claim-status::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(29, 78, 216, 0.05) 100%);
+            border-radius: 25px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .claim-status:hover::before {
+            left: 100%;
+            opacity: 1;
+        }
+        
+        .claim-status:hover::after {
+            opacity: 1;
+        }
+        
+        .claim-status:hover {
+            background: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 
+                0 0 20px rgba(0, 212, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 4px 20px rgba(0, 0, 0, 0.2);
+            color: rgba(0, 212, 255, 1);
+            transform: translateY(-1px);
+        }
+        
         .claim-status.claimed {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            background: rgba(22, 34, 22, 0.2);
+            color: rgba(0, 255, 136, 0.6);
+            border-color: rgba(0, 255, 136, 0.1);
+            box-shadow: 
+                0 0 5px rgba(0, 255, 136, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
         }
+        
+        .claim-status.claimed::before {
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+        }
+        
+        .claim-status.claimed::after {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(34, 197, 94, 0.05) 100%);
+        }
+        
+        .claim-status.claimed:hover {
+            background: rgba(22, 34, 22, 0.8);
+            border-color: rgba(0, 255, 136, 0.5);
+            box-shadow: 
+                0 0 20px rgba(0, 255, 136, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 4px 20px rgba(0, 0, 0, 0.2);
+            color: rgba(0, 255, 136, 1);
+        }
+        
         .price-tag {
-            background: #ff6b6b;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 0.8em;
+            background: rgba(22, 27, 34, 0.15);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            color: rgba(147, 51, 234, 0.8);
+            padding: 8px 16px;
+            border-radius: 18px;
+            font-weight: 700;
+            font-size: 0.9em;
             display: inline-block;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(147, 51, 234, 0.15);
+            box-shadow: 
+                0 0 8px rgba(147, 51, 234, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .price-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(147, 51, 234, 0.15), transparent);
+            transition: left 0.6s ease;
+            opacity: 0;
+        }
+        
+        .price-tag::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+            border-radius: 18px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .price-tag:hover::before {
+            left: 100%;
+            opacity: 1;
+        }
+        
+        .price-tag:hover::after {
+            opacity: 1;
+        }
+        
+        .price-tag:hover {
+            background: linear-gradient(135deg, rgba(45, 27, 105, 0.9) 0%, rgba(107, 70, 193, 0.9) 50%, rgba(147, 51, 234, 0.9) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transform: translateY(-2px);
+            border-color: rgba(147, 51, 234, 0.6);
+            box-shadow: 
+                0 0 25px rgba(147, 51, 234, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 8px 25px rgba(0, 0, 0, 0.25);
+            color: #ffffff;
         }
         .pricing-info {
             background: rgba(22, 27, 34, 0.3); /* Updated to match card opacity */
