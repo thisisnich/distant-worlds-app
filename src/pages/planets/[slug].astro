@@ -16,6 +16,7 @@ interface PlanetFrontmatter {
     year_length_days: number;
     day_length_hours: number;
     description: string;
+    claimed_no?: number;
 }
 
 interface MarkdownModule {
@@ -33,66 +34,439 @@ export async function getStaticPaths() {
 }
 
 const { planet } = Astro.props as { planet: MarkdownModule };
+
+// Calculate pricing
+const allPlanets = Object.values(import.meta.glob<MarkdownModule>('../../content/*.md', { eager: true }));
+const claimedPlanets = allPlanets.filter(p => p.frontmatter.claimed_no !== undefined);
+const nextClaimPrice = claimedPlanets.length + 1;
+
+function getPlanetPrice(planet: MarkdownModule): number {
+    if (planet.frontmatter.claimed_no !== undefined) {
+        return planet.frontmatter.claimed_no;
+    }
+    return nextClaimPrice;
+}
+
+function isPlanetClaimed(planet: MarkdownModule): boolean {
+    return planet.frontmatter.claimed_no !== undefined;
+}
+
 const slug = planet.frontmatter.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-*|-*$/g, '');
 const imageSlug = planet.frontmatter.name.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_*|_*$/g, '');
 const imagePath = `/images/${planet.frontmatter.planet_id.toString().padStart(3, '0')}_${imageSlug}.png`;
+const isClaimed = isPlanetClaimed(planet);
+const price = getPlanetPrice(planet);
 
 // Get the full compiled markdown content
 const fullContent = await planet.compiledContent();
-
-// Define the header to search for
 const extendedLoreHeader = '<h2 id="extended-lore-worldbuilding--deeper-reading">Extended Lore (worldbuilding &#x26; deeper reading)</h2>';
-
-// Find the start of the extended lore section
 const startIndex = fullContent.indexOf(extendedLoreHeader);
 
 let filteredContent = '';
 if (startIndex !== -1) {
-    // Extract the content from the extended lore header onwards
     filteredContent = fullContent.substring(startIndex);
-    // Replace the extended lore header with the desired "Lore:" header
-    filteredContent = filteredContent.replace(extendedLoreHeader, '<h2>Lore:</h2>');
+    filteredContent = filteredContent.replace(extendedLoreHeader, '<h2>Extended Lore</h2>');
 }
-
-// Remove debugging console logs
-// console.log('Full Content (after await):', fullContent);
-// console.log('Extended Lore Header:', extendedLoreHeader);
-// console.log('Start Index:', startIndex);
 ---
 
-<BaseLayout title={`Planet ${planet.frontmatter.planet_id}: ${planet.frontmatter.name}`}>
-    <div class="planet-hero" style={`background-image: url('${imagePath}')`}>
-    </div>
+<BaseLayout title={`Claim ${planet.frontmatter.name} - Distant Worlds`}>
+    <style>
+        .claim-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .planet-hero {
+            position: relative;
+            height: 60vh;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+        
+        .planet-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(0, 0, 0, 0.3) 0%,
+                rgba(0, 0, 0, 0.1) 50%,
+                rgba(0, 0, 0, 0.4) 100%
+            );
+        }
+        
+        .hero-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 3rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+        }
+        
+        .planet-id-hero {
+            font-size: 1.2em;
+            color: #00d4ff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .planet-name-hero {
+            font-size: 3.5em;
+            font-weight: 800;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .planet-scientific-hero {
+            font-size: 1.4em;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 0.5rem;
+        }
+        
+        .claim-section {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .planet-details {
+            background: rgba(22, 27, 34, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(48, 54, 61, 0.6);
+            border-radius: 20px;
+            padding: 2.5rem;
+            color: white;
+        }
+        
+        .claim-panel {
+            background: rgba(22, 27, 34, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(48, 54, 61, 0.6);
+            border-radius: 20px;
+            padding: 2.5rem;
+            color: white;
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .claim-status-large {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .claim-badge {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        
+        .claim-badge.available {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(29, 78, 216, 0.2) 100%);
+            color: #00d4ff;
+            border: 2px solid rgba(0, 212, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+        
+        .claim-badge.claimed {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2) 0%, rgba(34, 197, 94, 0.2) 100%);
+            color: #00ff88;
+            border: 2px solid rgba(0, 255, 136, 0.4);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+        
+        .price-display {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .price-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #9333ea;
+            text-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-label {
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .claim-button {
+            width: 100%;
+            padding: 18px 24px;
+            background: linear-gradient(135deg, #2d1b69 0%, #6b46c1 50%, #9333ea 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 2px solid rgba(147, 51, 234, 0.4);
+            box-shadow: 
+                0 0 25px rgba(147, 51, 234, 0.3),
+                0 8px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .claim-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 0 35px rgba(147, 51, 234, 0.5),
+                0 12px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(147, 51, 234, 0.8);
+        }
+        
+        .claim-button:disabled {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: rgba(255, 255, 255, 0.4);
+            cursor: not-allowed;
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: none;
+        }
+        
+        .claim-button:disabled:hover {
+            transform: none;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-value {
+            color: white;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        
+        .resources-list, .interests-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .resource-tag, .interest-tag {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+        
+        .interest-tag {
+            background: rgba(255, 136, 0, 0.2);
+            color: #ff8800;
+            border-color: rgba(255, 136, 0, 0.3);
+        }
+        
+        .description-section {
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            color: #00d4ff;
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .lore-section {
+            background: rgba(22, 27, 34, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(48, 54, 61, 0.6);
+            border-radius: 20px;
+            padding: 2.5rem;
+            color: white;
+            margin-top: 3rem;
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(48, 54, 61, 0.6);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-button:hover {
+            background: rgba(22, 27, 34, 0.95);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .claim-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .planet-name-hero {
+                font-size: 2.5em;
+            }
+            
+            .claim-panel {
+                position: static;
+            }
+        }
+    </style>
 
-    <div class="container">
-        <div class="planet-header-card">
-            <div class="planet-id-detail">Planet #{planet.frontmatter.planet_id}</div>
-            <h1>{planet.frontmatter.name}</h1>
-            <p class="planet-subtitle"><em>{planet.frontmatter.scientific_name}</em></p>
-        </div>
+    <a href="/" class="back-button">← Back to Collection</a>
 
-        <div class="planet-stats">
-            <div class="stat-item">
-                <span class="stat-label">Type</span>
-                <span class="stat-value">{planet.frontmatter.type}</span>
+    <div class="claim-container">
+        <div class="planet-hero" style={`background-image: url('${imagePath}')`}>
+            <div class="hero-content">
+                <div class="planet-id-hero">Planet #{planet.frontmatter.planet_id}</div>
+                <h1 class="planet-name-hero">{planet.frontmatter.name}</h1>
+                <p class="planet-scientific-hero">{planet.frontmatter.scientific_name}</p>
             </div>
-            <div class="stat-item">
-                <span class="stat-label">Biome</span>
-                <span class="stat-value">{planet.frontmatter.biome}</span>
+        </div>
+
+        <div class="claim-section">
+            <div class="planet-details">
+                <div class="description-section">
+                    <h2 class="section-title">Description</h2>
+                    <p>{planet.frontmatter.description}</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Type</div>
+                        <div class="stat-value">{planet.frontmatter.type}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Biome</div>
+                        <div class="stat-value">{planet.frontmatter.biome}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Gravity Source</div>
+                        <div class="stat-value">{planet.frontmatter.gravity_source}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Atmosphere</div>
+                        <div class="stat-value">{planet.frontmatter.atmosphere_type}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Habitability</div>
+                        <div class="stat-value">{planet.frontmatter.habitability}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Year Length</div>
+                        <div class="stat-value">{planet.frontmatter.year_length_days} days</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Day Length</div>
+                        <div class="stat-value">{planet.frontmatter.day_length_hours} hours</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Nickname</div>
+                        <div class="stat-value">"{planet.frontmatter.nickname}"</div>
+                    </div>
+                </div>
+
+                <div class="section-title">Primary Resources</div>
+                <div class="resources-list">
+                    {planet.frontmatter.primary_resources.map(resource => (
+                        <span class="resource-tag">{resource}</span>
+                    ))}
+                </div>
+
+                <div class="section-title" style="margin-top: 1.5rem;">Scientific Interest</div>
+                <div class="interests-list">
+                    {planet.frontmatter.scientific_interest.map(interest => (
+                        <span class="interest-tag">{interest}</span>
+                    ))}
+                </div>
             </div>
-            <div class="stat-item">
-                <span class="stat-label">Gravity Source</span>
-                <span class="stat-value">{planet.frontmatter.gravity_source}</span>
+
+            <div class="claim-panel">
+                <div class="claim-status-large">
+                    <div class={`claim-badge ${isClaimed ? 'claimed' : 'available'}`}>
+                        {isClaimed ? 'Already Claimed' : 'Available to Claim'}
+                    </div>
+                </div>
+
+                <div class="price-display">
+                    <div class="price-amount">${price}</div>
+                    <div class="price-label">USD</div>
+                </div>
+
+                <button 
+                    class="claim-button" 
+                    disabled={isClaimed}
+                    onclick={isClaimed ? '' : `alert('Claiming ${planet.frontmatter.name} for $${price}! This would integrate with your payment system.')`}
+                >
+                    {isClaimed ? 'Already Claimed' : 'Claim This Planet'}
+                </button>
+
+                {isClaimed && (
+                    <p style="text-align: center; margin-top: 1rem; color: rgba(255, 255, 255, 0.6); font-size: 0.9em;">
+                        This planet was claimed for ${price} USD
+                    </p>
+                )}
             </div>
         </div>
 
-        <div class="content-card">
-            <h2>Description</h2>
-            <p>{planet.frontmatter.description}</p>
-        </div>
-
-        <div class="content-card">
-            <div class="planet-content" set:html={filteredContent} />
-        </div>
+        {filteredContent && (
+            <div class="lore-section">
+                <div set:html={filteredContent} />
+            </div>
+        )}
     </div>
 </BaseLayout> 
