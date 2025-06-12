@@ -17,6 +17,7 @@ interface PlanetFrontmatter {
     day_length_hours: number;
     description: string;
     claimed_no?: number;
+    opensea_link?: string;
 }
 
 interface MarkdownModule {
@@ -449,10 +450,10 @@ if (startIndex !== -1) {
 
                 <button 
                     class="claim-button" 
-                    disabled={isClaimed}
-                    onclick={isClaimed ? '' : `alert('Claiming ${planet.frontmatter.name} for $${price}! This would integrate with your payment system.')`}
+                    disabled={!isClaimed ? false : !planet.frontmatter.opensea_link}
+                    onclick={isClaimed && planet.frontmatter.opensea_link ? `window.open('${planet.frontmatter.opensea_link}', '_blank')` : isClaimed ? '' : `alert('Claiming ${planet.frontmatter.name} for $${price}! This would integrate with your payment system.')`}
                 >
-                    {isClaimed ? 'Already Claimed' : 'Claim This Planet'}
+                    {isClaimed ? (planet.frontmatter.opensea_link ? 'View on OpenSea' : 'Already Claimed') : 'Claim This Planet'}
                 </button>
 
                 {isClaimed && (

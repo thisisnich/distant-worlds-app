@@ -8,6 +8,7 @@ gravity_source: Central Graviton Core
 nickname: The Float, The Cradle of Shifting Earth
 atmosphere_type: Oxygen-Nitrogen blend with high particulate density; aurora-active upper layers
 claimed_no: 1
+opensea_link: https://opensea.io/item/ethereum/0xb0249bb51c17fdaf632e7c80c51fcd8b766a7def/1
 primary_resources:
   - Crystalline silicates
   - Trace rare earth elements (suspended in mid-atmosphere)
