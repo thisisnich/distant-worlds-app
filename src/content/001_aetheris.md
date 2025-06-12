@@ -7,6 +7,7 @@ biome: Cloud-Wreathed Continental Shell
 gravity_source: Central Graviton Core
 nickname: The Float, The Cradle of Shifting Earth
 atmosphere_type: Oxygen-Nitrogen blend with high particulate density; aurora-active upper layers
+claimed_no: 1
 primary_resources:
   - Crystalline silicates
   - Trace rare earth elements (suspended in mid-atmosphere)

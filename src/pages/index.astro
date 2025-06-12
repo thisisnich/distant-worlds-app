@@ -16,6 +16,7 @@ interface PlanetFrontmatter {
     year_length_days: number;
     day_length_hours: number;
     description: string;
+    claimed_no?: number; // Optional claim number
 }
 
 interface Planet {
@@ -26,12 +27,97 @@ interface Planet {
 const allPlanets = Object.values(import.meta.glob<Planet>('../content/*.md', { eager: true }));
 
 console.log(`Found ${allPlanets.length} planets.`);
+
+// Calculate dynamic pricing
+const claimedPlanets = allPlanets.filter(planet => planet.frontmatter.claimed_no !== undefined);
+const nextClaimPrice = claimedPlanets.length + 1;
+
+// Function to get price for a planet
+function getPlanetPrice(planet: Planet): number {
+    if (planet.frontmatter.claimed_no !== undefined) {
+        return planet.frontmatter.claimed_no;
+    }
+    return nextClaimPrice;
+}
+
+// Function to check if planet is claimed
+function isPlanetClaimed(planet: Planet): boolean {
+    return planet.frontmatter.claimed_no !== undefined;
+}
 ---
 
 <BaseLayout title="Distant Worlds - Planet Collection">
     <style>
         .hero {
             /* Remove the problematic inline style */
+        }
+        .claim-status {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .claim-status.claimed {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+        .price-tag {
+            background: #ff6b6b;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 0.8em;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        .pricing-info {
+            background: rgba(22, 27, 34, 0.3); /* Updated to match card opacity */
+            backdrop-filter: blur(8px); /* Updated to match card blur */
+            -webkit-backdrop-filter: blur(8px); /* Updated to match card blur */
+            border: 1px solid rgba(48, 54, 61, 0.5); /* Updated to match card border */
+            color: white;
+            padding: 1.5rem;
+            border-radius: 16px; /* Updated to match card border-radius */
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.05); /* Updated to match card shadow */
+            transition: transform 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease; /* Updated from card */
+            position: relative; /* Added from card */
+            overflow: hidden; /* Added from card */
+        }
+
+        .pricing-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(88, 166, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .pricing-info:hover::before {
+            left: 100%;
+        }
+
+        .pricing-info:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(88, 166, 255, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px); /* Increase blur on hover */
+            border-color: rgba(88, 166, 255, 0.8);
+        }
+
+        .pricing-info p {
+            margin: 0.5rem 0;
+            font-size: 1.1em;
+        }
+        .pricing-info strong {
+            color: #fdd835; /* Highlight color */
         }
     </style>
     <div class="container">
@@ -60,12 +146,19 @@ console.log(`Found ${allPlanets.length} planets.`);
 
         <section class="planets-section">
             <h2 class="section-title">Available Worlds</h2>
+            <div class="pricing-info">
+                <p><strong>Current Status:</strong> {claimedPlanets.length} planet{claimedPlanets.length !== 1 ? 's' : ''} claimed</p>
+                <p><strong>Next Planet Price:</strong> ${nextClaimPrice} USD</p>
+            </div>
             <div id="planets-grid" class="planets-grid">
                 {
                     allPlanets.map((planet) => {
                         const slug = planet.frontmatter.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-*|-*$/g, '');
                         const imageSlug = planet.frontmatter.name.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_*|_*$/g, '');
                         const imagePath = `/images/${planet.frontmatter.planet_id.toString().padStart(3, '0')}_${imageSlug}.png`;
+                        const isClaimed = isPlanetClaimed(planet);
+                        const price = getPlanetPrice(planet);
+                        
                         return (
                             <a href={`/planets/${slug}`} class="card-link">
                                 <div class="card">
@@ -74,6 +167,12 @@ console.log(`Found ${allPlanets.length} planets.`);
                                     </div>
                                     <div class="card-content">
                                         <div class="planet-id">Planet #{planet.frontmatter.planet_id}</div>
+                                        <div class={`claim-status ${isClaimed ? 'claimed' : ''}`}>
+                                            {isClaimed ? 'CLAIMED' : 'CLICK TO CLAIM'}
+                                        </div>
+                                        <div class="price-tag">
+                                            ${price} USD
+                                        </div>
                                         <h2>{planet.frontmatter.name}</h2>
                                         <p><strong>Type:</strong> {planet.frontmatter.type}</p>
                                         <p><strong>Biome:</strong> {planet.frontmatter.biome}</p>
