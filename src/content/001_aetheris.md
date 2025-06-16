@@ -62,6 +62,9 @@ To most alien civilizations, Aetheris is simply a curiosity. To humans, it's pos
 *   [Trace Rare Earth Elements](/resources/trace_rare_earth_elements)
 *   [Magnetite Ridges](/resources/magnetite_ridges)
 
+### Relationships
+*   [Human Research Expeditions](/relationships/aetheris_human_research_expedition)
+
 ### Concepts
 *   [Fermi Paradox](/concepts/fermi_paradox)
 *   [Human Expeditions to Aetheris](/concepts/human_expeditions_to_aetheris) 
