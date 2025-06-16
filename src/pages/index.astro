@@ -24,7 +24,7 @@ interface Planet {
     compiledContent(): string;
 }
 
-const allPlanets = Object.values(import.meta.glob<Planet>('../content/*.md', { eager: true }));
+const allPlanets = Object.values(import.meta.glob<Planet>('../content/planets/*.md', { eager: true }));
 
 console.log(`Found ${allPlanets.length} planets.`);
 

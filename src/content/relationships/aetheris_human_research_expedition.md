@@ -1,21 +1,21 @@
 ---
 relationship_id: "aetheris_human_research_expedition"
-name: "Human Research Expeditions (Aetheris)"
+name: "Vanguard Sciences Collective Research Operations (Aetheris)"
 type: "Research Relationship"
-participants: ["Human Coalition", "Æclim Institute", "Aetheris"]
-description: "The ongoing human expeditions to study Aetheris represent one of humanity's most persistent and dangerous research efforts, driven by the belief that the planet holds answers to galactic mysteries."
+participants: ["The Vanguard Sciences Collective", "Æclim Institute", "Aetheris"]
+description: "The Vanguard Sciences Collective's ongoing expeditions to study Aetheris represent humanity's most persistent and dangerous research efforts, driven by the belief that the planet holds answers to galactic mysteries."
 ---
 
-# Human Research Expeditions (Aetheris)
+# Vanguard Sciences Collective Research Operations (Aetheris)
 
 **Associated Planet:** Aetheris
-**Participants:** Human Coalition, Æclim Institute, Aetheris (the planet)
+**Participants:** The Vanguard Sciences Collective, Æclim Institute, Aetheris (the planet)
 
 ## Description
-The human expeditions to Aetheris represent one of humanity's most persistent and dangerous research efforts. Unlike other species who have flagged the planet as unviable, humans continue to launch expeditions from a nearby star system where a multinational coalition maintains permanent watch, convinced that truth lies beneath its purple storms.
+The Vanguard Sciences Collective's expeditions to Aetheris represent humanity's most persistent and dangerous research efforts. Unlike other species who have flagged the planet as unviable, The Vanguard Sciences Collective continues to launch expeditions from their permanent watch station in a nearby star system, convinced that truth lies beneath its purple storms. These operations represent the Collective's most resource-intensive and controversial research program, embodying humanity's characteristic refusal to abandon dangerous mysteries.
 
 ## Interdependencies
-The relationship is characterized by humanity's relentless pursuit of knowledge despite the planet's hostile defenses. The graviton core's pull intensifies exponentially with proximity, crushing probes and twisting matter, yet this only fuels human determination. The Æclim Institute theorizes that Aetheris is a defensive mechanism built to hide something far worse, making the danger itself a compelling reason to continue research.
+The relationship is characterized by The Vanguard Sciences Collective's relentless pursuit of knowledge despite the planet's hostile defenses. The graviton core's pull intensifies exponentially with proximity, crushing probes and twisting matter, yet this only strengthens the Collective's determination to understand the phenomenon. The Æclim Institute, while operating independently, often collaborates with Collective expeditions, sharing their theory that Aetheris is a defensive mechanism built to hide something far worse. This makes the danger itself a compelling reason for both organizations to continue their research, creating a complex dynamic of official expeditions supplemented by rogue theoretical frameworks.
 
 ## Related Lore
 
@@ -34,4 +34,4 @@ The relationship is characterized by humanity's relentless pursuit of knowledge 
 
 ### Organizations
 *   [Æclim Institute](/organizations/aeclim_institute)
-*   [Human Coalition](/organizations/human_coalition) 
+*   [The Vanguard Sciences Collective](/organizations/vanguard_sciences_collective) 

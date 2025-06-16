@@ -1,5 +1,5 @@
 ---
-planet_id: 003
+planet_id: "003"
 name: Calyx-Vehl
 scientific_name: Calyx-Vehl Resonantis
 type: Glacial Resin Terrestrial

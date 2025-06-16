@@ -16,8 +16,8 @@ const planets = await getCollection('planets');
             <div class="item-grid">
                 {planets.map((planet) => (
                     <div class="item-card">
-                        <h3><a href={`/planets/${planet.slug}`}>{planet.data.name}</a></h3>
-                        <p class="description">{planet.data.description}</p>
+                        <h3><a href={`/planets/${planet.data.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-*|-*$/g, '')}`}>{planet.data.name}</a></h3>
+                            <p class="description">{planet.data.description?.replace(/\.md$/, '') ?? 'No description available'}</p>
                         {planet.data.type && (
                             <p class="meta"><strong>Type:</strong> {planet.data.type}</p>
                         )}

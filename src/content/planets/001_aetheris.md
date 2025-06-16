@@ -1,5 +1,5 @@
 ---
-planet_id: 001
+planet_id: "001"
 name: Aetheris
 scientific_name: Aetheris Invertum
 type: Hollow-Core Terrestrial

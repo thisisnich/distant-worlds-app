@@ -1,5 +1,5 @@
 ---
-planet_id: 004
+planet_id: "004"
 name: Ferraxis
 scientific_name: Cyclicus Ferrum Regeneratus
 type: Dense Metallic Terrestrial

@@ -1,5 +1,5 @@
 ---
-planet_id: 002
+planet_id: "002"
 name: Solithar
 scientific_name: Solithar Brimshalis
 type: Dense Desert Terrestrial

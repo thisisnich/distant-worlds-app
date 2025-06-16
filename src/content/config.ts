@@ -4,22 +4,13 @@ import { defineCollection, z } from 'astro:content';
 const planetsCollection = defineCollection({
   type: 'content',
   schema: z.object({
-    planet_id: z.string(),
     name: z.string(),
-    scientific_name: z.string(),
-    type: z.string(),
-    biome: z.string(),
-    gravity_source: z.string(),
-    nickname: z.string(),
-    atmosphere_type: z.string(),
-    primary_resources: z.array(z.string()),
-    scientific_interest: z.array(z.string()),
-    habitability: z.string(),
-    year_length_days: z.number(),
-    day_length_hours: z.number(),
-    description: z.string(),
-    claimed_no: z.number().optional(),
-    opensea_link: z.string().optional(),
+    description: z.string().optional(),
+    type: z.string().optional(),
+    biome: z.string().optional(),
+    atmosphere_type: z.string().optional(),
+    habitability: z.string().optional(),
+    primary_resources: z.array(z.string()).optional(),
   }),
 });
 

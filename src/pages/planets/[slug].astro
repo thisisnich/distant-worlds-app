@@ -27,7 +27,7 @@ interface MarkdownModule {
 }
 
 export async function getStaticPaths() {
-    const planetFiles = Object.values(import.meta.glob<MarkdownModule>('../../content/*.md', { eager: true }));
+    const planetFiles = Object.values(import.meta.glob<MarkdownModule>('../../content/planets/*.md', { eager: true }));
 
     return planetFiles.map(planet => ({
         params: { slug: planet.frontmatter.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-*|-*$/g, '') },
@@ -38,7 +38,7 @@ export async function getStaticPaths() {
 const { planet } = Astro.props as { planet: MarkdownModule };
 
 // Calculate pricing
-const allPlanets = Object.values(import.meta.glob<MarkdownModule>('../../content/*.md', { eager: true }));
+const allPlanets = Object.values(import.meta.glob<MarkdownModule>('../../content/planets/*.md', { eager: true }));
 const claimedPlanets = allPlanets.filter(p => p.frontmatter.claimed_no !== undefined);
 const nextClaimPrice = claimedPlanets.length + 1;
 
