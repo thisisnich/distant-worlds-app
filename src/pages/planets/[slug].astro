@@ -135,6 +135,13 @@ function parseRelatedLore(content: string) {
 
 const relatedLore = parseRelatedLore(relatedLoreContent);
 
+// DEBUGGING RELATED LORE - START
+console.log('=== DEBUGGING RELATED LORE ===');
+console.log('Planet:', planet.frontmatter.name);
+console.log('relatedLoreContent (raw, first 500 chars):', relatedLoreContent.substring(0, 500));
+console.log('Parsed relatedLore object:', JSON.stringify(relatedLore, null, 2));
+// DEBUGGING RELATED LORE - END
+
 ---
 
 <BaseLayout title={`Claim ${planet.frontmatter.name} - Distant Worlds`}>
