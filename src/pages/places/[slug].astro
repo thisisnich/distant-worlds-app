@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import '../../styles/wiki.css';
+
+export async function getStaticPaths() {
+    const places = await getCollection('places');
+    return places.map((place) => {
+        return {
+            params: { slug: place.slug },
+            props: { place }
+        };
+    });
+}
+
+const { place } = Astro.props;
+const { Content } = await place.render();
+
+// Generate a title from the slug
+const title = place.slug.split('_').map(word => 
+    word.charAt(0).toUpperCase() + word.slice(1)
+).join(' ');
+---
+
+<BaseLayout title={place.data.name}>
+    <div class="wiki-container">
+        <a href="/places" class="back-button">← Back to Places</a>
+        <div class="wiki-content">
+            <Content />
+        </div>
+    </div>
+</BaseLayout> 

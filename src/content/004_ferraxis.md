@@ -68,3 +68,7 @@ But beneath the industrial success lies a growing concern. The planet's magnetic
 
 ### Relationships
 *   [Industrial-Biological Symbiosis](/relationships/ferraxis_industrial_biological_symbiosis)
+
+### Concepts
+*   [Dual-Band Industrial Metropolis](/concepts/dual_band_industrial_metropolis)
+*   [Magnetic Fuel Cycle Regeneration](/concepts/magnetic_fuel_cycle_regeneration)

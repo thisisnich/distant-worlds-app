@@ -25,9 +25,20 @@ The Luminous Chasms are also key to Nhyrex culture and spirituality. They are se
 ### Planets
 *   [Solithar](/planets/solithar)
 
+### Places
+*   [The Great Archive](/places/the_great_archive)
+*   [Nhyrex Subterranean Cities](/places/nhyrex_subterranean_cities)
+
 ### Planetary Features
 *   [Sulfuric Ravines](/features/sulfuric_ravines)
 *   [Brimshale Formations](/features/brimshale_formations)
 
 ### Resources
-*   [Brimshale](/resources/brimshale) 
+*   [Brimshale](/resources/brimshale)
+*   [Crystalline Light-Storage Matrices](/resources/crystalline_light_storage_matrices)
+
+### Technology
+*   [Photoreactive Mineral Formations](/technology/photoreactive_mineral_formations)
+
+### Concepts
+*   [Light as Currency](/concepts/light_as_currency) 

@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import '../../styles/wiki.css';
+
+export async function getStaticPaths() {
+    const concepts = await getCollection('concepts');
+    return concepts.map((concept) => {
+        return {
+            params: { slug: concept.slug },
+            props: { concept }
+        };
+    });
+}
+
+const { concept } = Astro.props;
+const { Content } = await concept.render();
+
+// Generate a title from the slug
+const title = concept.slug.split('_').map(word => 
+    word.charAt(0).toUpperCase() + word.slice(1)
+).join(' ');
+---
+
+<BaseLayout title={`${title} - Distant Worlds Concepts`}>
+    <div class="wiki-container">
+        <a href="/concepts" class="back-button">← Back to Concepts</a>
+        <div class="wiki-content">
+            <Content />
+        </div>
+    </div>
+</BaseLayout> 

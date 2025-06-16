@@ -36,6 +36,11 @@
             <li>Created `src/content/relationships/` directory and populated with individual markdown files for each significant relationship or phenomenon (e.g., `ferraxis_industrial_biological_symbiosis.md`).</li>
             <li>Integrated links to these new wiki files into existing planet markdown files (`001_aetheris.md`, `004_ferraxis.md`, `003_calyx_vehl.md`, `002_solithar.md`) via a "Related Lore" section for easy navigation.</li>
             <li>Expanded "Related Lore" section with new categories (Places, Planetary Features, Technology, Concepts) and populated `002_solithar.md` accordingly (2024-07-29, Version 1.4).</li>
+            <li>Created slug files for new lore categories: `src/pages/places/[slug].astro`, `src/pages/features/[slug].astro`, `src/pages/technology/[slug].astro`, and `src/pages/concepts/[slug].astro` to enable routing to the new markdown content (2024-07-29, Version 1.5).</li>
+            <li>Created content collections configuration file `src/content/config.ts` to define all auto-generated collections: concepts, features, lore_connections, places, relationships, resources, species, technology, and planets with proper TypeScript schemas for type safety (2024-07-29, Version 1.6).</li>
+            <li>Fixed resources page error by converting `src/pages/resources/[slug].astro` from redirect system to content display system, and created missing `src/pages/species/[slug].astro` to handle species content routing (2024-07-29, Version 1.7).</li>
+            <li>Updated resource and species files with proper frontmatter structure and Related Lore sections containing correct planet links that redirect to planet pages using proper slug-based URLs (e.g., `/planets/solithar`, `/planets/calyx-vehl`) (2024-07-29, Version 1.8).</li>
+            <li>Enhanced planet link styling across all lore page types (resources, species, places, features, technology, concepts, relationships) with distinctive orange styling and hover effects to make associated planet links more prominent and visually distinct in Related Lore sections (2024-07-29, Version 1.9).</li>
         </ul>
     </ul>
     <h2>Next Steps</h2>

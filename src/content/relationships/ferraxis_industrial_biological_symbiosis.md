@@ -1,3 +1,11 @@
+---
+relationship_id: "ferraxis_industrial_biological_symbiosis"
+name: "Industrial-Biological Symbiosis (Ferraxis)"
+type: "Planetary Symbiosis"
+participants: ["Green City Band", "Red City Band", "Ferraxis"]
+description: "The two city bands on Ferraxis represent humanity's most sophisticated example of industrial-biological symbiosis, where biological and industrial systems work in perfect harmony."
+---
+
 # Industrial-Biological Symbiosis (Ferraxis)
 
 **Associated Planet:** Ferraxis

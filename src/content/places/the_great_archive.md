@@ -25,6 +25,14 @@ Its construction spanned millennia, with each generation of Nhyrex adding to its
 ### Planets
 *   [Solithar](/planets/solithar)
 
+### Places
+*   [Nhyrex Subterranean Cities](/places/nhyrex_subterranean_cities)
+*   [Luminous Chasms](/places/luminous_chasms)
+
+### Resources
+*   [Crystalline Light-Storage Matrices](/resources/crystalline_light_storage_matrices)
+*   [Brimshale](/resources/brimshale)
+
 ### Technology
 *   [Nhyrex Crystalline Conduits](/technology/nhyrex_crystalline_conduits)
 

@@ -1,3 +1,11 @@
+---
+relationship_id: "calyx_vehl_vhorran_planetary_symbiosis"
+name: "Vhorran-Planetary Symbiosis (Calyx-Vehl)"
+type: "Environmental Symbiosis"
+participants: ["Vhorran Echoclade", "Calyx-Vehl"]
+description: "Calyx-Vehl represents one of the galaxy's most sophisticated examples of environmental symbiosis, where the Vhorran Echoclade have evolved to become an extension of the planet itself, acting as living instruments in a planetary orchestra."
+---
+
 # Vhorran-Planetary Symbiosis (Calyx-Vehl)
 
 **Associated Planet:** Calyx-Vehl

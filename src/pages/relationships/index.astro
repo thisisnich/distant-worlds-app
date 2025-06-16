@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import '../../styles/wiki.css';
+
+const relationships = await getCollection('relationships');
+---
+
+<BaseLayout title="Relationships - Distant Worlds">
+    <div class="wiki-container">
+        <a href="/" class="back-button">← Back to Home</a>
+        <div class="wiki-content">
+            <h1>Relationships</h1>
+            <p>Explore the complex relationships and symbioses between different entities in the Distant Worlds universe.</p>
+            
+            <div class="item-grid">
+                {relationships.map((relationship) => (
+                    <div class="item-card">
+                        <h3><a href={`/relationships/${relationship.slug}`}>{relationship.data.name}</a></h3>
+                        <p class="description">{relationship.data.description}</p>
+                        {relationship.data.type && (
+                            <p class="meta"><strong>Type:</strong> {relationship.data.type}</p>
+                        )}
+                        {relationship.data.participants && (
+                            <p class="meta"><strong>Participants:</strong> {relationship.data.participants.join(', ')}</p>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</BaseLayout> 

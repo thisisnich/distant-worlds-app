@@ -136,10 +136,10 @@ function parseRelatedLore(content: string) {
 const relatedLore = parseRelatedLore(relatedLoreContent);
 
 // DEBUGGING RELATED LORE - START
-console.log('=== DEBUGGING RELATED LORE ===');
-console.log('Planet:', planet.frontmatter.name);
-console.log('relatedLoreContent (raw, first 500 chars):', relatedLoreContent.substring(0, 500));
-console.log('Parsed relatedLore object:', JSON.stringify(relatedLore, null, 2));
+// console.log('=== DEBUGGING RELATED LORE ===');
+// console.log('Planet:', planet.frontmatter.name);
+// console.log('relatedLoreContent (raw, first 500 chars):', relatedLoreContent.substring(0, 500));
+// console.log('Parsed relatedLore object:', JSON.stringify(relatedLore, null, 2));
 // DEBUGGING RELATED LORE - END
 
 ---
@@ -154,8 +154,8 @@ console.log('Parsed relatedLore object:', JSON.stringify(relatedLore, null, 2));
         
         .planet-hero {
             position: relative;
-            height: 60vh;
-            background-size: cover;
+            height: 70vh;
+            background-size: 150vh;
             background-position: center;
             background-attachment: fixed;
             border-radius: 20px;

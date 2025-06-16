@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import '../../styles/wiki.css';
+
+export async function getStaticPaths() {
+    const technologies = await getCollection('technology');
+    return technologies.map((tech) => {
+        return {
+            params: { slug: tech.slug },
+            props: { tech }
+        };
+    });
+}
+
+const { tech } = Astro.props;
+const { Content } = await tech.render();
+
+// Generate a title from the slug
+const title = tech.slug.split('_').map(word => 
+    word.charAt(0).toUpperCase() + word.slice(1)
+).join(' ');
+---
+
+<BaseLayout title={`${title} - Distant Worlds Technology`}>
+    <div class="wiki-container">
+        <a href="/technology" class="back-button">← Back to Technology</a>
+        <div class="wiki-content">
+            <Content />
+        </div>
+    </div>
+</BaseLayout> 

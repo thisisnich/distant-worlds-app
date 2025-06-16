@@ -2,27 +2,27 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/wiki.css';
 
-interface ResourceModule {
+interface SpeciesModule {
     default: any;
     compiledContent(): string;
 }
 
 export async function getStaticPaths() {
-    const resourceFiles = Object.entries(import.meta.glob<ResourceModule>('../../content/resources/*.md', { eager: true }));
+    const speciesFiles = Object.entries(import.meta.glob<SpeciesModule>('../../content/species/*.md', { eager: true }));
 
-    return resourceFiles.map(([path, resource]) => {
+    return speciesFiles.map(([path, species]) => {
         const slug = path.split('/').pop()?.replace('.md', '') || '';
         return {
             params: { slug },
-            props: { resource, slug },
+            props: { species, slug },
         };
     });
 }
 
-const { resource, slug } = Astro.props as { resource: ResourceModule; slug: string };
+const { species, slug } = Astro.props as { species: SpeciesModule; slug: string };
 
 // Get the full compiled markdown content
-const fullContent = await resource.compiledContent();
+const fullContent = await species.compiledContent();
 
 // Generate a title from the slug
 const title = slug.split('_').map(word => 
@@ -30,8 +30,7 @@ const title = slug.split('_').map(word =>
 ).join(' ');
 ---
 
-<BaseLayout title={`${title} - Distant Worlds Resources`}>
-
+<BaseLayout title={`${title} - Distant Worlds Species`}>
     <a href="/" class="back-button">← Back to Collection</a>
 
     <div class="wiki-container">
