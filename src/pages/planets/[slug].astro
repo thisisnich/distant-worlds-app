@@ -61,22 +61,30 @@ const price = getPlanetPrice(planet);
 
 // Get the full compiled markdown content
 const fullContent = await planet.compiledContent();
-const extendedLoreHeader = '<h2 id="extended-lore-worldbuilding--deeper-reading">Extended Lore (worldbuilding &#x26; deeper reading)</h2>';
-const relatedLoreHeader = '<h2 id="related-lore">Related Lore</h2>';
-const startIndex = fullContent.indexOf(extendedLoreHeader);
-const relatedLoreStartIndex = fullContent.indexOf(relatedLoreHeader);
+
+// More flexible header detection using regex patterns
+const extendedLorePattern = /<h2[^>]*>Extended Lore \(worldbuilding &#x26; deeper reading\)<\/h2>/i;
+const relatedLorePattern = /<h2[^>]*>Related Lore<\/h2>/i;
+
+const extendedLoreMatch = fullContent.match(extendedLorePattern);
+const relatedLoreMatch = fullContent.match(relatedLorePattern);
 
 let filteredContent = '';
 let relatedLoreContent = '';
 
-if (startIndex !== -1) {
-    if (relatedLoreStartIndex !== -1 && relatedLoreStartIndex > startIndex) {
+if (extendedLoreMatch) {
+    const startIndex = extendedLoreMatch.index || 0;
+    
+    if (relatedLoreMatch && (relatedLoreMatch.index || 0) > startIndex) {
+        const relatedLoreStartIndex = relatedLoreMatch.index || 0;
         filteredContent = fullContent.substring(startIndex, relatedLoreStartIndex);
         relatedLoreContent = fullContent.substring(relatedLoreStartIndex);
     } else {
         filteredContent = fullContent.substring(startIndex);
     }
-    filteredContent = filteredContent.replace(extendedLoreHeader, '<h2>Extended Lore</h2>');
+    
+    // Replace the header with a cleaner version
+    filteredContent = filteredContent.replace(extendedLorePattern, '<h2>Extended Lore</h2>');
 }
 
 // Define an interface for related lore items
@@ -85,37 +93,48 @@ interface RelatedLoreItem {
     url: string;
 }
 
-// Function to parse related lore links
+// Function to parse related lore links from HTML content
 function parseRelatedLore(content: string) {
     const categories: { species: RelatedLoreItem[]; resources: RelatedLoreItem[]; relationships: RelatedLoreItem[] } = {
         species: [],
         resources: [],
         relationships: []
     };
-    const lines = content.split('\n');
-    let currentCategory = '';
 
-    for (const line of lines) {
-        if (line.includes('### Species')) {
-            currentCategory = 'species';
-        } else if (line.includes('### Resources')) {
-            currentCategory = 'resources';
-        } else if (line.includes('### Relationships')) {
-            currentCategory = 'relationships';
-        } else if (line.startsWith('*   ') && currentCategory) {
-            const match = line.match(/\*\\s*\\[(.*?)\\]\\((.*?)\\)/);
-            if (match && match[1] && match[2]) {
-                categories[currentCategory as keyof typeof categories].push({
-                    text: match[1],
-                    url: match[2]
-                });
-            }
+    const liRegex = /<li><a href="(.*?)">(.*?)<\/a><\/li>/g;
+
+    // Extract Species section
+    const speciesMatch = content.match(/<h3[^>]*>Species<\/h3>\s*<ul>(.*?)<\/ul>/s);
+    if (speciesMatch && speciesMatch[1]) {
+        let match;
+        while ((match = liRegex.exec(speciesMatch[1])) !== null) {
+            categories.species.push({ text: match[2], url: match[1] });
         }
     }
+
+    // Extract Resources section
+    const resourcesMatch = content.match(/<h3[^>]*>Resources<\/h3>\s*<ul>(.*?)<\/ul>/s);
+    if (resourcesMatch && resourcesMatch[1]) {
+        let match;
+        while ((match = liRegex.exec(resourcesMatch[1])) !== null) {
+            categories.resources.push({ text: match[2], url: match[1] });
+        }
+    }
+
+    // Extract Relationships section
+    const relationshipsMatch = content.match(/<h3[^>]*>Relationships<\/h3>\s*<ul>(.*?)<\/ul>/s);
+    if (relationshipsMatch && relationshipsMatch[1]) {
+        let match;
+        while ((match = liRegex.exec(relationshipsMatch[1])) !== null) {
+            categories.relationships.push({ text: match[2], url: match[1] });
+        }
+    }
+
     return categories;
 }
 
 const relatedLore = parseRelatedLore(relatedLoreContent);
+
 ---
 
 <BaseLayout title={`Claim ${planet.frontmatter.name} - Distant Worlds`}>
@@ -128,8 +147,8 @@ const relatedLore = parseRelatedLore(relatedLoreContent);
         
         .planet-hero {
             position: relative;
-            height: 70vh;
-            background-size: 150vh;
+            height: 60vh;
+            background-size: cover;
             background-position: center;
             background-attachment: fixed;
             border-radius: 20px;
@@ -456,6 +475,30 @@ const relatedLore = parseRelatedLore(relatedLoreContent);
             color: #c780ff;
             text-decoration: underline;
         }
+
+        /* Debug section styles */
+        .debug-section {
+            background: rgba(255, 0, 0, 0.1);
+            border: 2px solid red;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            color: white;
+        }
+
+        .debug-section h2 {
+            color: red;
+            margin-bottom: 1rem;
+        }
+
+        .debug-section pre {
+            white-space: pre-wrap;
+            font-size: 12px;
+            color: white;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
     </style>
 
     <a href="/" class="back-button">← Back to Collection</a>
