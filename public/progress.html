@@ -27,6 +27,10 @@
         <li>Implemented dynamic content loading for planet details.</li>
         <li>Created a wiki-like lore organization (2024-06-17, Version 1.1)</li>
         <ul>
+            <li>Integrated "Related Lore" section on planet detail pages (`src/pages/planets/[slug].astro`) to parse and display links from markdown files (already implemented).</li>
+            <li>Created `src/pages/resources/[slug].astro` for resource redirection (2024-06-18, Version 1.2).</li>
+            <li>Created `src/pages/relationships/[slug].astro` for relationships content display (2024-06-18, Version 1.3).</li>
+            <li>Created `src/pages/lore-connections/[slug].astro` for lore connections content display (2024-06-18, Version 1.3).</li>
             <li>Created `src/content/resources/` directory and populated with individual markdown files for each resource (e.g., `graviton_core.md`, `magcarbon.md`).</li>
             <li>Created `src/content/species/` directory and populated with individual markdown files for each species (e.g., `vhorran_echoclade.md`, `nhyrex_confluence.md`).</li>
             <li>Created `src/content/relationships/` directory and populated with individual markdown files for each significant relationship or phenomenon (e.g., `ferraxis_industrial_biological_symbiosis.md`).</li>
@@ -42,4 +46,4 @@
         <li>Add price tag to the planet pages.(depends on how many md files are claimed (md files tag "claimed" = true))</li>
     </ul>
 </body>
-</html> 
+</html>

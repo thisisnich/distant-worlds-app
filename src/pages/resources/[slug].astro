@@ -1,0 +1,29 @@
+---
+
+interface ResourceMap {
+    [key: string]: string;
+}
+
+const resources: ResourceMap = {
+    'example-resource': 'https://www.example.com/resource',
+    'another-resource': 'https://www.anothersite.org/item'
+};
+
+export async function getStaticPaths() {
+    return Object.keys(resources).map(slug => ({
+        params: { slug }
+    }));
+}
+
+const { slug } = Astro.params;
+const url = resources[slug];
+
+if (url) {
+    return Astro.redirect(url, 302);
+} else {
+    // Handle case where resource is not found, e.g., redirect to a 404 page or home
+    return Astro.redirect('/404', 404); // You might want to create a 404 page
+}
+---
+
+<!-- This page performs a server-side redirect based on the slug. --> 

@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+interface LoreConnectionModule {
+    default: any;
+    compiledContent(): string;
+}
+
+export async function getStaticPaths() {
+    const loreConnectionFiles = Object.entries(import.meta.glob<LoreConnectionModule>('../../content/lore_connections/*.md', { eager: true }));
+
+    return loreConnectionFiles.map(([path, loreConnection]) => {
+        const slug = path.split('/').pop()?.replace('.md', '') || '';
+        return {
+            params: { slug },
+            props: { loreConnection, slug },
+        };
+    });
+}
+
+const { loreConnection, slug } = Astro.props as { loreConnection: LoreConnectionModule; slug: string };
+
+// Get the full compiled markdown content
+const fullContent = await loreConnection.compiledContent();
+
+// Generate a title from the slug
+const title = slug.split('_').map(word => 
+    word.charAt(0).toUpperCase() + word.slice(1)
+).join(' ');
+---
+
+<BaseLayout title={`${title} - Distant Worlds Lore Connections`}>
+    <style>
+        .lore-connection-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .lore-connection-content {
+            background: rgba(22, 27, 34, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(48, 54, 61, 0.6);
+            border-radius: 20px;
+            padding: 2.5rem;
+            color: white;
+            line-height: 1.6;
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 2rem;
+            background: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(48, 54, 61, 0.6);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-button:hover {
+            background: rgba(22, 27, 34, 0.95);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .lore-connection-content h1 {
+            color: #ff8800;
+            font-size: 2.8em;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(255, 136, 0, 0.3);
+        }
+        
+        .lore-connection-content h2 {
+            color: #00d4ff;
+            font-size: 1.8em;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+            padding-bottom: 0.5rem;
+        }
+        
+        .lore-connection-content h3 {
+            color: #9333ea;
+            font-size: 1.4em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .lore-connection-content p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .lore-connection-content strong {
+            color: #00ff88;
+        }
+        
+        .lore-connection-content ul {
+            margin-bottom: 1.5rem;
+        }
+        
+        .lore-connection-content li {
+            margin-bottom: 0.8rem;
+            padding-left: 1rem;
+            border-left: 2px solid rgba(255, 136, 0, 0.3);
+        }
+        
+        .lore-connection-content li strong {
+            color: #ff8800;
+        }
+        
+        .lore-connection-content em {
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .lore-connection-container {
+                padding: 1rem;
+            }
+            
+            .lore-connection-content {
+                padding: 1.5rem;
+            }
+            
+            .lore-connection-content h1 {
+                font-size: 2.2em;
+            }
+        }
+    </style>
+
+    <a href="/" class="back-button">← Back to Collection</a>
+
+    <div class="lore-connection-container">
+        <div class="lore-connection-content">
+            <div set:html={fullContent} />
+        </div>
+    </div>
+</BaseLayout> 
