@@ -517,6 +517,31 @@ import '../styles/nav.css';
 				console.log('Small Stars:', smallStars);
 				console.log('Medium Stars:', mediumStars);
 				console.log('Large Stars:', largeStars);
+
+				// Wiki dropdown toggle functionality
+				const dropdownToggle = document.querySelector('.dropdown-toggle');
+				const dropdown = document.querySelector('.nav-dropdown');
+
+				if (dropdownToggle && dropdown) {
+					dropdownToggle.addEventListener('click', (e) => {
+						e.preventDefault();
+						dropdown.classList.toggle('active');
+					});
+
+					// Close dropdown when clicking outside
+					document.addEventListener('click', (e) => {
+						if (!dropdown.contains(e.target)) {
+							dropdown.classList.remove('active');
+						}
+					});
+
+					// Navigate to wiki when shift+clicking or middle-clicking
+					dropdownToggle.addEventListener('click', (e) => {
+						if (e.shiftKey || e.ctrlKey || e.metaKey || e.button === 1) {
+							window.location.href = '/wiki';
+						}
+					});
+				}
 			});
 		</script>
 	</head>
@@ -524,7 +549,21 @@ import '../styles/nav.css';
 		<nav class="main-nav">
 			<ul>
 				<li><a href="/">Home</a></li>
-				<li><a href="/wiki">Wiki</a></li>
+				<li class="nav-dropdown">
+					<a href="/wiki" class="dropdown-toggle">Wiki ▼</a>
+					<div class="dropdown-content">
+						<a href="/wiki">📚 All Collections</a>
+						<a href="/planets">🪐 Planets</a>
+						<a href="/species">🧬 Species</a>
+						<a href="/resources">⚡ Resources</a>
+						<a href="/places">🏛️ Places</a>
+						<a href="/features">🌋 Features</a>
+						<a href="/technology">🔬 Technology</a>
+						<a href="/concepts">💭 Concepts</a>
+						<a href="/relationships">🔗 Relationships</a>
+						<a href="/lore-connections">📖 Lore Connections</a>
+					</div>
+				</li>
 				<li><a href="/about">About</a></li>
 			</ul>
 		</nav>

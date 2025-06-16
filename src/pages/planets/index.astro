@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import '../../styles/wiki.css';
+
+const planets = await getCollection('planets');
+---
+
+<BaseLayout title="Planets - Distant Worlds">
+    <div class="wiki-container">
+        <a href="/" class="back-button">← Back to Home</a>
+        <div class="wiki-content">
+            <h1>Planets</h1>
+            <p>Explore the diverse worlds that make up the Distant Worlds universe, each with unique characteristics, resources, and life forms.</p>
+            
+            <div class="item-grid">
+                {planets.map((planet) => (
+                    <div class="item-card">
+                        <h3><a href={`/planets/${planet.slug}`}>{planet.data.name}</a></h3>
+                        <p class="description">{planet.data.description}</p>
+                        {planet.data.type && (
+                            <p class="meta"><strong>Type:</strong> {planet.data.type}</p>
+                        )}
+                        {planet.data.biome && (
+                            <p class="meta"><strong>Biome:</strong> {planet.data.biome}</p>
+                        )}
+                        {planet.data.atmosphere_type && (
+                            <p class="meta"><strong>Atmosphere:</strong> {planet.data.atmosphere_type}</p>
+                        )}
+                        {planet.data.habitability && (
+                            <p class="meta"><strong>Habitability:</strong> {planet.data.habitability}</p>
+                        )}
+                        {planet.data.primary_resources && planet.data.primary_resources.length > 0 && (
+                            <p class="meta"><strong>Primary Resources:</strong> {planet.data.primary_resources.join(', ')}</p>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</BaseLayout> 
