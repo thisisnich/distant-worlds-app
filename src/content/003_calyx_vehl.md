@@ -47,3 +47,15 @@ Recent xenological studies suggest the Vhorran may not be native to Calyx-Vehl. 
 The most disturbing discovery came from the failed Terran expedition of 2387. Before losing contact, the team reported that the Vhorran's harmonic communications contained embedded patterns that matched human brainwave frequencies during states of extreme distress. Whether this represents an attempt at empathic communication or something more sinister remains unknown.
 
 The phenomenon known as "Glasshowl Syndrome" affects roughly 90% of non-Vhorran visitors to the planet's subsurface cities. Victims report auditory hallucinations that persist long after leaving Calyx-Vehl, describing voices that speak in frequencies just below conscious perception. Some claim these voices contain prophetic information about galactic events, leading to the disturbing possibility that the Vhorran aren't just communicating with their planet — they're listening to something much larger.
+
+## Related Lore
+### Species
+*   [Vhorran Echoclade](/species/vhorran_echoclade)
+
+### Resources
+*   [Glacial Resin](/resources/glacial_resin)
+*   [Crystalline Resonance Chambers](/resources/crystalline_resonance_chambers)
+*   [Ionized Atmospheric Energy Collectors](/resources/ionized_atmospheric_energy_collectors)
+
+### Relationships
+*   [Vhorran-Planetary Symbiosis](/relationships/calyx_vehl_vhorran_planetary_symbiosis)

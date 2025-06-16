@@ -47,3 +47,15 @@ The Nhyrex culture of silence isn't born from inability to speak, but from rever
 Recent surveys suggest the Nhyrex may have made contact with other light-based civilizations across the galaxy, possibly explaining similar photoreactive minerals found on distant worlds. Some xenobiologists theorize that Solithar isn't just a planet — it's a node in a galaxy-spanning network of light-based communication, with the Nhyrex serving as keepers of knowledge too vast for any single world to contain.
 
 The few human expeditions that have reached Solithar's orbit report an unsettling phenomenon: their ships' lighting systems begin to pulse in synchronized patterns, as if responding to signals from the planet below. Whether this represents an attempt at communication or something more ominous remains unknown.
+
+## Related Lore
+### Species
+*   [Nhyrex Confluence](/species/nhyrex_confluence)
+
+### Resources
+*   [Brimshale](/resources/brimshale)
+*   [Crystalline Light-Storage Matrices](/resources/crystalline_light_storage_matrices)
+*   [Molten Ochre Deposits](/resources/molten_ochre_deposits)
+
+### Relationships
+*   [Nhyrex-Planetary Symbiosis](/relationships/solithar_nhyrex_planetary_symbiosis) // Assuming this will be created later

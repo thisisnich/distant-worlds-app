@@ -53,4 +53,11 @@ Yet humans persist. They always do.
 
 Some believe the graviton core is a containment system — not a support. Others think it's a beacon or a failed experiment. A rogue human group, the Æclim Institute, theorizes Aetheris is a defensive mechanism built to hide something far worse. They've tracked dozens of spatial anomalies that align with other unclaimed "Fermi Points" — zones where civilizations may have vanished before first contact.
 
-To most alien civilizations, Aetheris is simply a curiosity. To humans, it's possibly the last question they'll ever get to ask. 
+To most alien civilizations, Aetheris is simply a curiosity. To humans, it's possibly the last question they'll ever get to ask.
+
+## Related Lore
+### Resources
+*   [Graviton Core](/resources/graviton_core)
+*   [Crystalline Silicates](/resources/crystalline_silicates)
+*   [Trace Rare Earth Elements](/resources/trace_rare_earth_elements)
+*   [Magnetite Ridges](/resources/magnetite_ridges) 

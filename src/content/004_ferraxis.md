@@ -59,3 +59,12 @@ The symbiosis goes deeper than mere cooperation. Waste heat from the industrial 
 The Magnetis Trade Guild controls the export of both Magcarbon and its synthetic derivatives to other worlds. When synthetic Magcarbon is burned elsewhere, its spent powder must be returned to Magnetis to recharge—creating a galactic economy centered on the planet's unique magnetic properties. Recent attempts to create artificial magnetic fields strong enough to recharge the powder have failed, making Magnetis irreplaceable in the galactic supply chain.
 
 But beneath the industrial success lies a growing concern. The planet's magnetic field has been gradually intensifying over the past century, possibly due to the constant Magcarbon extraction affecting the core's stability. Some scientists fear that Magnetis might be building toward a magnetic reversal event that could sterilize the surface and disrupt the delicate balance that makes the city bands habitable. For now, the forges burn bright and the green cities flourish—but the question remains whether humanity's greatest industrial triumph might also be its most precarious achievement.
+
+## Related Lore
+### Resources
+*   [Magcarbon](/resources/magcarbon)
+*   [Voidrium](/resources/voidrium)
+*   [Cryosteel](/resources/cryosteel)
+
+### Relationships
+*   [Industrial-Biological Symbiosis](/relationships/ferraxis_industrial_biological_symbiosis)
