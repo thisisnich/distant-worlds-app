@@ -1,3 +1,13 @@
+---
+resource_id: "molten_ochre_deposits"
+name: "Molten Ochre Deposits"
+type: "Natural Resource"
+origin: "Solithar"
+description: "Molten ochre deposits are a primary resource found on Solithar."
+rarity: "Common"
+uses: ["Construction", "Industrial applications"]
+---
+
 # Molten Ochre Deposits
 
 **Type:** Natural Resource

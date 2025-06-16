@@ -1,3 +1,13 @@
+---
+resource_id: "glacial_resin"
+name: "Glacial Resin"
+type: "Unique Mineral Resource"
+origin: "Calyx-Vehl"
+description: "Glacial resin is a glass-like mineral with unique piezoelectric properties that covers Calyx-Vehl's surface. When subjected to mechanical stress, such as the planet's constant storms, it generates electrical currents."
+rarity: "Unique"
+uses: ["Electrical generation", "Piezoelectric applications", "Energy harvesting"]
+---
+
 # Glacial Resin
 
 **Type:** Unique Mineral Resource

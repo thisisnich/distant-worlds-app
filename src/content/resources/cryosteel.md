@@ -1,3 +1,13 @@
+---
+resource_id: "cryosteel"
+name: "Cryosteel"
+type: "Rare Metal/Resource"
+origin: "Ferraxis"
+description: "Cryosteel is a polar ice-blue crystal refined in facilities on Ferraxis. It is used as hull plating for colony ships."
+rarity: "Rare"
+uses: ["Colony ship hull plating", "Industrial construction"]
+---
+
 # Cryosteel
 
 **Type:** Rare Metal/Resource

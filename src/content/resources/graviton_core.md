@@ -1,3 +1,13 @@
+---
+resource_id: "graviton_core"
+name: "Graviton Core"
+type: "Artificial Technology/Resource"
+origin: "Aetheris"
+description: "The graviton core is a mysterious, artificially originated technology that maintains Aetheris's impossible orbit. Its pull intensifies exponentially with proximity, crushing probes, twisting matter, and blinding sensors."
+rarity: "Unique"
+uses: ["Gravity manipulation", "Orbital mechanics", "Unknown alien technology"]
+---
+
 # Graviton Core
 
 **Type:** Artificial Technology/Resource

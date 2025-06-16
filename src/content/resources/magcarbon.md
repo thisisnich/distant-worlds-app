@@ -1,3 +1,13 @@
+---
+resource_id: "magcarbon"
+name: "Magcarbon"
+type: "Unique Regenerative Fuel/Resource"
+origin: "Ferraxis"
+description: "Magcarbon is a magnetic carbon compound that defies conventional physics. It burns with incredible efficiency to power massive industrial operations, then breaks down into a fine powder that naturally recharges its magnetic properties from Ferraxis's magnetic field."
+rarity: "Unique"
+uses: ["Industrial power generation", "Massive industrial operations", "Self-sustaining energy systems"]
+---
+
 # Magcarbon
 
 **Type:** Unique Regenerative Fuel/Resource

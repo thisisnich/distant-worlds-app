@@ -1,3 +1,13 @@
+---
+resource_id: "voidrium"
+name: "Voidrium"
+type: "Rare Ore/Resource"
+origin: "Ferraxis"
+description: "Voidrium is the planet's signature purple ore, extracted from the metallic crust of Ferraxis. It powers faster-than-light drives across the galaxy."
+rarity: "Rare"
+uses: ["Faster-than-light drives", "Galactic FTL travel"]
+---
+
 # Voidrium
 
 **Type:** Rare Ore/Resource

@@ -1,3 +1,11 @@
+---
+connection_id: "significant_lore_points"
+name: "Significant Lore Points"
+type: "Universe Documentation"
+description: "This document outlines key lore elements and recurring themes across the known planets, serving as a reference for future worldbuilding and narrative development."
+entities: ["Aetheris", "Ferraxis", "Calyx-Vehl", "Solithar", "Vhorran Echoclade", "Nhyrex Confluence"]
+---
+
 # Significant Lore Points (as of 2024-06-16, Version 1.0)
 
 This document outlines key lore elements and recurring themes across the known planets, serving as a reference for future worldbuilding and narrative development.

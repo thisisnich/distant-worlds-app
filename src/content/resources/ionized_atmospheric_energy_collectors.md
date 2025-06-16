@@ -1,3 +1,13 @@
+---
+resource_id: "ionized_atmospheric_energy_collectors"
+name: "Ionized Atmospheric Energy Collectors"
+type: "Technology/Resource"
+origin: "Calyx-Vehl"
+description: "Ionized atmospheric energy collectors are massive stridulators used by the Vhorran Echoclade to harvest Calyx-Vehl's endless storms. They convert wind into power and chaos into communication."
+rarity: "Unique"
+uses: ["Energy collection", "Weather control", "Long-distance communication"]
+---
+
 # Ionized Atmospheric Energy Collectors
 
 **Type:** Technology/Resource

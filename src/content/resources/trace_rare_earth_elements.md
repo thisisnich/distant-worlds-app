@@ -1,3 +1,13 @@
+---
+resource_id: "trace_rare_earth_elements"
+name: "Trace Rare Earth Elements"
+type: "Natural Resource"
+origin: "Aetheris"
+description: "Trace rare earth elements are a primary resource found suspended in mid-atmosphere on Aetheris."
+rarity: "Rare"
+uses: ["High-tech manufacturing", "Electronic components"]
+---
+
 # Trace Rare Earth Elements
 
 **Type:** Natural Resource

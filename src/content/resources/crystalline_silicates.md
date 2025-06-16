@@ -1,3 +1,13 @@
+---
+resource_id: "crystalline_silicates"
+name: "Crystalline Silicates"
+type: "Natural Resource"
+origin: "Aetheris"
+description: "Crystalline silicates are a primary resource found on Aetheris."
+rarity: "Common"
+uses: ["Construction", "Industrial applications"]
+---
+
 # Crystalline Silicates
 
 **Type:** Natural Resource

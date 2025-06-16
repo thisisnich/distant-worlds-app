@@ -1,3 +1,13 @@
+---
+resource_id: "magnetite_ridges"
+name: "Magnetite Ridges"
+type: "Natural Resource"
+origin: "Aetheris"
+description: "Magnetite ridges are a primary resource found near the graviton-facing crust on Aetheris."
+rarity: "Common"
+uses: ["Industrial applications", "Magnetic equipment"]
+---
+
 # Magnetite Ridges
 
 **Type:** Natural Resource

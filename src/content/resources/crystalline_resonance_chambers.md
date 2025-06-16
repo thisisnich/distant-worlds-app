@@ -1,3 +1,13 @@
+---
+resource_id: "crystalline_resonance_chambers"
+name: "Crystalline Resonance Chambers"
+type: "Resource/Architectural Element"
+origin: "Calyx-Vehl"
+description: "Crystalline resonance chambers are vast networks of polished structures that form the cities of the Vhorran Echoclade. These chambers are designed to harness the planet's constant vibrations."
+rarity: "Unique"
+uses: ["Vhorran communication", "Vibration harvesting", "Memory and prophecy storage"]
+---
+
 # Crystalline Resonance Chambers
 
 **Type:** Resource/Architectural Element
