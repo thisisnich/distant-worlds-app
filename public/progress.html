@@ -50,6 +50,9 @@
             <li>Expanded GION lore to include its calculated aversion to Calyx-Vehl and Solithar due to political and integration complexities, and detailed the challenges with human strongholds like Ferraxis, where The Vanguard Sciences Collective supports human defenses. This lore highlights GION's strict adherence to efficiency and its perception of organic irrationality in complex planetary engagements (2024-12-22, Version 2.6).</li>
             <li>Fixed planets not displaying on the wiki by moving planet markdown files from `src/content/` to `src/content/planets/`. This aligns the content files with the `astro:content` collection configuration, allowing the planets index page (`src/pages/planets/index.astro`) to correctly fetch and display the planet data (2024-12-22, Version 2.7).</li>
             <li>Updated planet links on the main planets page (`src/pages/planets/index.astro`) to use the planet's name (slugified) in the URL instead of the numerical ID from the filename (2024-07-29, Version 2.8).</li>
+            <li>Added organization links to relevant planet lore, linking to Æclim Institute, Galactic Industrial Optimization Network, The Vanguard Sciences Collective, and Ferraxis Miners Guild from their respective planet pages (2024-07-29, Version 2.9).</li>
+            <li>Fixed `astro:content` module not found error by removing conflicting `defineCollection` and `collections` object from `astro.config.mjs`, allowing Astro to correctly process content types from `src/content/config.ts` (2024-12-22, Version 2.10).</li>
+            <li>Ensured full visibility of 'Related Lore' descriptions by adjusting parsing and rendering logic in `src/pages/planets/[slug].astro` to correctly capture and display all descriptive text associated with related items (2024-12-22, Version 2.11).</li>
         </ul>
     </ul>
     <h2>Next Steps</h2>

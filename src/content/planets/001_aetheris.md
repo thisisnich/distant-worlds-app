@@ -67,4 +67,10 @@ To most alien civilizations, Aetheris is simply a curiosity. To humans, it's pos
 
 ### Concepts
 *   [Fermi Paradox](/concepts/fermi_paradox)
-*   [Human Expeditions to Aetheris](/concepts/human_expeditions_to_aetheris) 
+*   [Human Expeditions to Aetheris](/concepts/human_expeditions_to_aetheris)
+
+### Organizations
+*   [Æclim Institute](/organizations/aeclim_institute)
+*   [Galactic Industrial Optimization Network](/organizations/galactic_industrial_optimization_network) - Classified as Category 5 Industrial Hazard with absolute operational exclusion
+*   [The Vanguard Sciences Collective](/organizations/vanguard_sciences_collective) - Maintains permanent surveillance and coordinates official human expeditions
+*   [Galactic Survey Consortium](/organizations/galactic_survey_consortium) - Classified as "unviable anomaly" with maximum risk rating 

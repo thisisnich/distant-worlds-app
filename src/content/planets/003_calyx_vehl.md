@@ -59,3 +59,6 @@ The phenomenon known as "Glasshowl Syndrome" affects roughly 90% of non-Vhorran 
 
 ### Relationships
 *   [Vhorran-Planetary Symbiosis](/relationships/calyx_vehl_vhorran_planetary_symbiosis)
+
+### Organizations
+*   [Galactic Industrial Optimization Network](/organizations/galactic_industrial_optimization_network) - Classified as a "Political Hazard - Integration Unfeasible" due to the Vhorran Echoclade's established presence and psychological impact

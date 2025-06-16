@@ -91,24 +91,30 @@ if (extendedLoreMatch) {
 interface RelatedLoreItem {
     text: string;
     url: string;
+    description?: string;
 }
 
 // Function to parse related lore links from HTML content
 function parseRelatedLore(content: string) {
-    const categories: { species: RelatedLoreItem[]; resources: RelatedLoreItem[]; relationships: RelatedLoreItem[] } = {
+    const categories: { species: RelatedLoreItem[]; resources: RelatedLoreItem[]; relationships: RelatedLoreItem[]; organizations: RelatedLoreItem[]; concepts: RelatedLoreItem[]; features: RelatedLoreItem[]; places: RelatedLoreItem[]; technology: RelatedLoreItem[]; } = {
         species: [],
         resources: [],
-        relationships: []
+        relationships: [],
+        organizations: [],
+        concepts: [],
+        features: [],
+        places: [],
+        technology: [],
     };
 
-    const liRegex = /<li><a href="(.*?)">(.*?)<\/a><\/li>/g;
+    const liRegex = /<li><a href="(.*?)">(.*?)<\/a>(.*?)<\/li>/g;
 
     // Extract Species section
     const speciesMatch = content.match(/<h3[^>]*>Species<\/h3>\s*<ul>(.*?)<\/ul>/s);
     if (speciesMatch && speciesMatch[1]) {
         let match;
         while ((match = liRegex.exec(speciesMatch[1])) !== null) {
-            categories.species.push({ text: match[2], url: match[1] });
+            categories.species.push({ text: match[2], url: match[1], description: match[3].trim() });
         }
     }
 
@@ -117,7 +123,7 @@ function parseRelatedLore(content: string) {
     if (resourcesMatch && resourcesMatch[1]) {
         let match;
         while ((match = liRegex.exec(resourcesMatch[1])) !== null) {
-            categories.resources.push({ text: match[2], url: match[1] });
+            categories.resources.push({ text: match[2], url: match[1], description: match[3].trim() });
         }
     }
 
@@ -126,7 +132,52 @@ function parseRelatedLore(content: string) {
     if (relationshipsMatch && relationshipsMatch[1]) {
         let match;
         while ((match = liRegex.exec(relationshipsMatch[1])) !== null) {
-            categories.relationships.push({ text: match[2], url: match[1] });
+            categories.relationships.push({ text: match[2], url: match[1], description: match[3].trim() });
+        }
+    }
+
+    // Extract Organizations section
+    const organizationsMatch = content.match(/<h3[^>]*>Organizations<\/h3>\s*<ul>(.*?)<\/ul>/s);
+    if (organizationsMatch && organizationsMatch[1]) {
+        let match;
+        while ((match = liRegex.exec(organizationsMatch[1])) !== null) {
+            categories.organizations.push({ text: match[2], url: match[1], description: match[3].trim() });
+        }
+    }
+
+    // Extract Concepts section
+    const conceptsMatch = content.match(/<h3[^>]*>Concepts<\/h3>\s*<ul>(.*?)<\/ul>/s);
+    if (conceptsMatch && conceptsMatch[1]) {
+        let match;
+        while ((match = liRegex.exec(conceptsMatch[1])) !== null) {
+            categories.concepts.push({ text: match[2], url: match[1], description: match[3].trim() });
+        }
+    }
+
+    // Extract Features section
+    const featuresMatch = content.match(/<h3[^>]*>Features<\/h3>\s*<ul>(.*?)<\/ul>/s);
+    if (featuresMatch && featuresMatch[1]) {
+        let match;
+        while ((match = liRegex.exec(featuresMatch[1])) !== null) {
+            categories.features.push({ text: match[2], url: match[1], description: match[3].trim() });
+        }
+    }
+
+    // Extract Places section
+    const placesMatch = content.match(/<h3[^>]*>Places<\/h3>\s*<ul>(.*?)<\/ul>/s);
+    if (placesMatch && placesMatch[1]) {
+        let match;
+        while ((match = liRegex.exec(placesMatch[1])) !== null) {
+            categories.places.push({ text: match[2], url: match[1], description: match[3].trim() });
+        }
+    }
+
+    // Extract Technology section
+    const technologyMatch = content.match(/<h3[^>]*>Technology<\/h3>\s*<ul>(.*?)<\/ul>/s);
+    if (technologyMatch && technologyMatch[1]) {
+        let match;
+        while ((match = liRegex.exec(technologyMatch[1])) !== null) {
+            categories.technology.push({ text: match[2], url: match[1], description: match[3].trim() });
         }
     }
 
@@ -618,7 +669,12 @@ const relatedLore = parseRelatedLore(relatedLoreContent);
                         <h3>Species</h3>
                         <ul>
                             {relatedLore.species.map(item => (
-                                <li><a href={item.url}>{item.text}</a></li>
+                                <li>
+                                    <a href={item.url} class={item.url.includes('/planets/') ? 'planet-link' : ''}>
+                                        {item.text}
+                                    </a>
+                                    {item.description && <span style="color: red; font-weight: bold;">{item.description}</span>}
+                                </li>
                             ))}
                         </ul>
                     </>
@@ -628,20 +684,110 @@ const relatedLore = parseRelatedLore(relatedLoreContent);
                         <h3>Resources</h3>
                         <ul>
                             {relatedLore.resources.map(item => (
-                                <li><a href={item.url}>{item.text}</a></li>
+                                <li>
+                                    <a href={item.url} class={item.url.includes('/planets/') ? 'planet-link' : ''}>
+                                        {item.text}
+                                    </a>
+                                    {item.description && <span style="color: red; font-weight: bold;">{item.description}</span>}
+                                </li>
                             ))}
                         </ul>
                     </>
                 )}
                 {relatedLore.relationships.length > 0 && (
-                    <>
+                    <div>
                         <h3>Relationships</h3>
                         <ul>
                             {relatedLore.relationships.map(item => (
-                                <li><a href={item.url}>{item.text}</a></li>
+                                <li>
+                                    <a href={item.url} class={item.url.includes('/planets/') ? 'planet-link' : ''}>
+                                        {item.text}
+                                    </a>
+                                    {item.description && <span style="color: red; font-weight: bold;">{item.description}</span>}
+                                </li>
                             ))}
                         </ul>
-                    </>
+                    </div>
+                )}
+
+                {relatedLore.organizations.length > 0 && (
+                    <div>
+                        <h3>Organizations</h3>
+                        <ul>
+                            {relatedLore.organizations.map(item => (
+                                <li>
+                                    <a href={item.url} class={item.url.includes('/planets/') ? 'planet-link' : ''}>
+                                        {item.text}
+                                    </a>
+                                    {item.description}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+
+                {relatedLore.concepts.length > 0 && (
+                    <div>
+                        <h3>Concepts</h3>
+                        <ul>
+                            {relatedLore.concepts.map(item => (
+                                <li>
+                                    <a href={item.url} class={item.url.includes('/planets/') ? 'planet-link' : ''}>
+                                        {item.text}
+                                    </a>
+                                    {item.description && <span style="color: red; font-weight: bold;">{item.description}</span>}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+
+                {relatedLore.features.length > 0 && (
+                    <div>
+                        <h3>Planetary Features</h3>
+                        <ul>
+                            {relatedLore.features.map(item => (
+                                <li>
+                                    <a href={item.url} class={item.url.includes('/planets/') ? 'planet-link' : ''}>
+                                        {item.text}
+                                    </a>
+                                    {item.description && <span style="color: red; font-weight: bold;">{item.description}</span>}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+
+                {relatedLore.places.length > 0 && (
+                    <div>
+                        <h3>Places</h3>
+                        <ul>
+                            {relatedLore.places.map(item => (
+                                <li>
+                                    <a href={item.url} class={item.url.includes('/planets/') ? 'planet-link' : ''}>
+                                        {item.text}
+                                    </a>
+                                    {item.description && <span style="color: red; font-weight: bold;">{item.description}</span>}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+
+                {relatedLore.technology.length > 0 && (
+                    <div>
+                        <h3>Technology</h3>
+                        <ul>
+                            {relatedLore.technology.map(item => (
+                                <li>
+                                    <a href={item.url} class={item.url.includes('/planets/') ? 'planet-link' : ''}>
+                                        {item.text}
+                                    </a>
+                                    {item.description && <span style="color: red; font-weight: bold;">{item.description}</span>}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 )}
             </div>
         )}

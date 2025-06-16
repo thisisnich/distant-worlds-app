@@ -77,3 +77,6 @@ The few human expeditions that have reached Solithar's orbit report an unsettlin
 ### Concepts
 *   [Light as Currency](/concepts/light_as_currency)
 *   [Human Expeditions to Solithar](/concepts/human_expeditions_to_solithar)
+
+### Organizations
+*   [Galactic Industrial Optimization Network](/organizations/galactic_industrial_optimization_network) - Classified as a "Political Hazard - Integration Unfeasible" due to the Nhyrex Confluence's established presence and unique societal structure

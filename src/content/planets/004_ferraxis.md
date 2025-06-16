@@ -72,3 +72,7 @@ But beneath the industrial success lies a growing concern. The planet's magnetic
 ### Concepts
 *   [Dual-Band Industrial Metropolis](/concepts/dual_band_industrial_metropolis)
 *   [Magnetic Fuel Cycle Regeneration](/concepts/magnetic_fuel_cycle_regeneration)
+
+### Organizations
+*   [Galactic Industrial Optimization Network](/organizations/galactic_industrial_optimization_network) - Highly valuable, but currently deemed economically unviable due to human resistance and Vanguard Sciences Collective support
+*   [Ferraxis Miners Guild](/organizations/example_miners_guild) - Dominant mining consortium on Ferraxis, controlling mineral extraction operations
