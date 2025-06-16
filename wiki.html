@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distant Worlds Wiki Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #0a0f1c;
+            color: #e4e8f1;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #1a2332, #2a3441);
+            border-radius: 10px;
+            border: 1px solid #3a4451;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: #1a2332;
+            border-radius: 8px;
+            border: 1px solid #2a3441;
+        }
+        h1 { color: #7dd3fc; font-size: 2.5rem; margin-bottom: 10px; }
+        h2 { color: #38bdf8; border-bottom: 2px solid #38bdf8; padding-bottom: 10px; }
+        h3 { color: #7dd3fc; margin-top: 25px; }
+        h4 { color: #bae6fd; }
+        .content-type { 
+            background-color: #0f172a; 
+            padding: 20px; 
+            border-radius: 6px; 
+            margin: 15px 0;
+            border-left: 4px solid #38bdf8;
+        }
+        .template-box {
+            background-color: #0f172a;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border: 1px solid #334155;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        .connection-map {
+            background-color: #0f172a;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border: 1px solid #059669;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-box {
+            background-color: #0f172a;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #475569;
+        }
+        .stat-number { font-size: 2rem; color: #38bdf8; font-weight: bold; }
+        .file-list { columns: 2; column-gap: 30px; }
+        .file-item { break-inside: avoid; margin-bottom: 8px; color: #94a3b8; }
+        code { background-color: #334155; padding: 2px 6px; border-radius: 3px; color: #fbbf24; }
+        .warning { background-color: #7f1d1d; padding: 15px; border-radius: 6px; border-left: 4px solid #ef4444; }
+        .tip { background-color: #0f3f0f; padding: 15px; border-radius: 6px; border-left: 4px solid #22c55e; }
+        .ai-template { background-color: #1e1b4b; padding: 20px; border-radius: 6px; border: 2px solid #6366f1; }
+        .toc { background-color: #0f172a; padding: 20px; border-radius: 6px; margin-bottom: 30px; }
+        .toc a { color: #7dd3fc; text-decoration: none; }
+        .toc a:hover { color: #38bdf8; }
+        .relationship-line { color: #10b981; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌌 Distant Worlds Wiki Documentation</h1>
+        <p><strong>AI Agent Reference Guide</strong> | Last Updated: 2024-06-16 | Version 1.0</p>
+        <p>Complete documentation of all wiki content types, relationships, and templates for future content creation</p>
+    </div>
+
+    <div class="toc">
+        <h3>📋 Table of Contents</h3>
+        <ul>
+            <li><a href="#overview">Wiki Overview & Statistics</a></li>
+            <li><a href="#content-types">Content Types & Schemas</a></li>
+            <li><a href="#relationships">Content Relationships & Connections</a></li>
+            <li><a href="#templates">AI Agent Templates</a></li>
+            <li><a href="#guidelines">Content Creation Guidelines</a></li>
+            <li><a href="#universe-lore">Universe Lore Connections</a></li>
+        </ul>
+    </div>
+
+    <div id="overview" class="section">
+        <h2>📊 Wiki Overview & Current Statistics</h2>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">4</div>
+                <div>Planets</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">13</div>
+                <div>Resources</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">5</div>
+                <div>Organizations</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">2</div>
+                <div>Species</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">2</div>
+                <div>Technologies</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">4</div>
+                <div>Relationships</div>
+            </div>
+        </div>
+
+        <h3>🗂️ Current Content Inventory</h3>
+        
+        <h4>Planets (4)</h4>
+        <div class="file-list">
+            <div class="file-item">• 001_aetheris.md - Hollow-Core Terrestrial with graviton core</div>
+            <div class="file-item">• 002_solithar.md - Desert world with light-based civilization</div>
+            <div class="file-item">• 003_calyx_vehl.md - Frozen world with sonic civilization</div>
+            <div class="file-item">• 004_ferraxis.md - Industrial world with magnetic fuel cycle</div>
+        </div>
+
+        <h4>Organizations (5)</h4>
+        <div class="file-list">
+            <div class="file-item">• galactic_industrial_optimization_network.md</div>
+            <div class="file-item">• aeclim_institute.md</div>
+            <div class="file-item">• vanguard_sciences_collective.md</div>
+            <div class="file-item">• galactic_survey_consortium.md</div>
+            <div class="file-item">• example_miners_guild.md</div>
+        </div>
+
+        <h4>Species (2)</h4>
+        <div class="file-list">
+            <div class="file-item">• vhorran_echoclade.md - Crystalline sonic beings from Calyx-Vehl</div>
+            <div class="file-item">• nhyrex_confluence.md - Light-harvesting beings from Solithar</div>
+        </div>
+
+        <h4>Resources (13)</h4>
+        <div class="file-list">
+            <div class="file-item">• crystalline_silicates.md</div>
+            <div class="file-item">• graviton_core.md</div>
+            <div class="file-item">• trace_rare_earth_elements.md</div>
+            <div class="file-item">• cryosteel.md</div>
+            <div class="file-item">• crystalline_resonance_chambers.md</div>
+            <div class="file-item">• ionized_atmospheric_energy_collectors.md</div>
+            <div class="file-item">• magcarbon.md</div>
+            <div class="file-item">• molten_ochre_deposits.md</div>
+            <div class="file-item">• voidrium.md</div>
+            <div class="file-item">• glacial_resin.md</div>
+            <div class="file-item">• magnetite_ridges.md</div>
+            <div class="file-item">• brimshale.md</div>
+            <div class="file-item">• crystalline_light_storage_matrices.md</div>
+        </div>
+    </div>
+
+    <div id="content-types" class="section">
+        <h2>🏗️ Content Types & Schemas</h2>
+        <p>The wiki consists of 10 main content types, each with specific schemas defined in <code>src/content/config.ts</code></p>
+
+        <div class="content-type">
+            <h3>🪐 Planets</h3>
+            <p><strong>Primary content type.</strong> Each planet is a detailed world with lore, resources, and connections.</p>
+            <p><strong>Schema Fields:</strong> name, description, type, biome, atmosphere_type, habitability, primary_resources</p>
+            <p><strong>Directory:</strong> <code>src/content/planets/</code></p>
+            <p><strong>Naming:</strong> <code>001_planetname.md</code> (3-digit ID + name)</p>
+        </div>
+
+        <div class="content-type">
+            <h3>👥 Species</h3>
+            <p><strong>Alien civilizations.</strong> Describes intelligent life forms found on planets.</p>
+            <p><strong>Schema Fields:</strong> species_id, name, scientific_name, origin, description, classification, habitat</p>
+            <p><strong>Directory:</strong> <code>src/content/species/</code></p>
+        </div>
+
+        <div class="content-type">
+            <h3>💎 Resources</h3>
+            <p><strong>Materials and substances.</strong> Unique resources found on planets with specific properties.</p>
+            <p><strong>Schema Fields:</strong> resource_id, name, type, origin, description, rarity, uses</p>
+            <p><strong>Directory:</strong> <code>src/content/resources/</code></p>
+        </div>
+
+        <div class="content-type">
+            <h3>🏢 Organizations</h3>
+            <p><strong>Galactic institutions.</strong> Research groups, corporations, and other organized entities.</p>
+            <p><strong>Schema Fields:</strong> organization_id, name, type, location, description, purpose, membership, influence</p>
+            <p><strong>Directory:</strong> <code>src/content/organizations/</code></p>
+        </div>
+
+        <div class="content-type">
+            <h3>🔬 Technology</h3>
+            <p><strong>Advanced technologies.</strong> Scientific innovations and alien tech.</p>
+            <p><strong>Schema Fields:</strong> technology_id, name, origin, description, type, complexity</p>
+            <p><strong>Directory:</strong> <code>src/content/technology/</code></p>
+        </div>
+
+        <div class="content-type">
+            <h3>🤝 Relationships</h3>
+            <p><strong>Connections between entities.</strong> How different elements interact.</p>
+            <p><strong>Schema Fields:</strong> relationship_id, name, type, participants, description</p>
+            <p><strong>Directory:</strong> <code>src/content/relationships/</code></p>
+        </div>
+
+        <div class="content-type">
+            <h3>📍 Places</h3>
+            <p><strong>Specific locations.</strong> Notable places within planets or space.</p>
+            <p><strong>Schema Fields:</strong> place_id, name, location, description, type, significance</p>
+            <p><strong>Directory:</strong> <code>src/content/places/</code></p>
+        </div>
+
+        <div class="content-type">
+            <h3>🏔️ Features</h3>
+            <p><strong>Planetary features.</strong> Geological or environmental characteristics.</p>
+            <p><strong>Schema Fields:</strong> feature_id, name, planet, type, description</p>
+            <p><strong>Directory:</strong> <code>src/content/features/</code></p>
+        </div>
+
+        <div class="content-type">
+            <h3>💭 Concepts</h3>
+            <p><strong>Ideas and phenomena.</strong> Abstract concepts in the universe.</p>
+            <p><strong>Schema Fields:</strong> concept_id, name, origin, description, category</p>
+            <p><strong>Directory:</strong> <code>src/content/concepts/</code></p>
+        </div>
+
+        <div class="content-type">
+            <h3>🔗 Lore Connections</h3>
+            <p><strong>Meta-narrative links.</strong> Documents how different lore elements connect.</p>
+            <p><strong>Schema Fields:</strong> connection_id, name, type, description, entities</p>
+            <p><strong>Directory:</strong> <code>src/content/lore_connections/</code></p>
+        </div>
+    </div>
+
+    <div id="relationships" class="section">
+        <h2>🕸️ Content Relationships & Connections</h2>
+        
+        <div class="connection-map">
+            <h3>Primary Connection Patterns</h3>
+            
+            <p><span class="relationship-line">🪐 Planets → 💎 Resources:</span> Each planet contains specific resources that define its economic value</p>
+            <p><span class="relationship-line">🪐 Planets → 👥 Species:</span> Native species evolved on specific planets</p>
+            <p><span class="relationship-line">🪐 Planets → 🏢 Organizations:</span> Organizations study, exploit, or monitor planets</p>
+            <p><span class="relationship-line">👥 Species → 🔬 Technology:</span> Species develop unique technologies based on their environment</p>
+            <p><span class="relationship-line">🏢 Organizations → 🤝 Relationships:</span> Organizations form relationships with planets, species, or each other</p>
+            <p><span class="relationship-line">🪐 Planets → 🏔️ Features:</span> Planets contain specific geological/environmental features</p>
+            <p><span class="relationship-line">🪐 Planets → 📍 Places:</span> Notable locations exist within planets</p>
+        </div>
+
+        <h3>🔍 Current Relationship Examples</h3>
+        <ul>
+            <li><strong>Aetheris ↔ Human Expeditions:</strong> Ongoing research relationships</li>
+            <li><strong>Ferraxis ↔ Industrial Symbiosis:</strong> Human-planetary industrial relationship</li>
+            <li><strong>Calyx-Vehl ↔ Vhorran Planetary Symbiosis:</strong> Species-planet symbiosis</li>
+            <li><strong>Solithar ↔ Nhyrex Planetary Symbiosis:</strong> Species-planet symbiosis</li>
+        </ul>
+
+        <div class="tip">
+            <strong>💡 Connection Tip:</strong> When creating new content, always consider which existing entities it should connect to. Each new piece should reference at least 2-3 existing elements to maintain narrative cohesion.
+        </div>
+    </div>
+
+    <div id="templates" class="section">
+        <h2>🤖 AI Agent Templates</h2>
+        
+        <div class="ai-template">
+            <h3>🪐 Planet Creation Template</h3>
+            <div class="template-box">
+---
+planet_id: "XXX"
+name: Planet Name
+scientific_name: Scientific Designation
+type: Planet Classification
+biome: Primary Environment Type
+gravity_source: Gravity Mechanism
+nickname: Common Names, Alternate Designations
+atmosphere_type: Atmospheric composition and characteristics
+primary_resources:
+  - Resource type 1
+  - Resource type 2
+  - Resource type 3
+scientific_interest:
+  - Research area 1
+  - Research area 2
+  - Research area 3
+habitability: Detailed habitability assessment
+year_length_days: ###
+day_length_hours: ##.#
+description: "Brief, compelling one-sentence description"
+---
+
+## Description (for reels & quick viewing)
+[1-2 sentences. Visual impact and intrigue for social media.]
+
+---
+
+## Lore (for posts)
+[3-5 paragraphs. Include hook, environmental features, alien civilizations, human perspective, mysteries.]
+
+---
+
+## Extended Lore (worldbuilding & deeper reading)
+[4-7 paragraphs. Historical context, scientific explanations, cultural details, connections to other worlds, unresolved mysteries.]
+
+## Related Lore
+### Resources
+* [Resource Name](/resources/resource_id)
+
+### Relationships
+* [Relationship Name](/relationships/relationship_id)
+
+### Organizations
+* [Organization Name](/organizations/organization_id)
+            </div>
+        </div>
+
+        <div class="ai-template">
+            <h3>👥 Species Creation Template</h3>
+            <div class="template-box">
+---
+species_id: "species_name"
+name: Species Name
+scientific_name: Latin/Greek Scientific Name
+origin: Planet Name
+description: "Brief description of the species"
+classification: Biological classification
+habitat: Primary habitat description
+---
+
+# Species Name
+
+[Detailed description including physical characteristics, culture, technology, relationship with their planet, and interactions with other species.]
+            </div>
+        </div>
+
+        <div class="ai-template">
+            <h3>💎 Resource Creation Template</h3>
+            <div class="template-box">
+---
+resource_id: "resource_name"
+name: Resource Name
+type: Resource category
+origin: Planet or location of origin
+description: "Brief description of the resource"
+rarity: Rarity level
+uses:
+  - Use case 1
+  - Use case 2
+  - Use case 3
+---
+
+# Resource Name
+
+[Detailed description including formation process, extraction methods, applications, and economic significance.]
+            </div>
+        </div>
+
+        <div class="ai-template">
+            <h3>🏢 Organization Creation Template</h3>
+            <div class="template-box">
+---
+organization_id: "organization_name"
+name: Organization Name
+type: Organization type
+location: Primary location or headquarters
+description: "Brief description of the organization"
+purpose: Primary purpose or mission
+membership: Who can join or how membership works
+influence: Scope and level of influence
+---
+
+# Organization Name
+
+[Detailed description including history, operations, key personnel, relationships with planets/species, and current activities.]
+            </div>
+        </div>
+
+        <div class="ai-template">
+            <h3>🤝 Relationship Creation Template</h3>
+            <div class="template-box">
+---
+relationship_id: "relationship_name"
+name: Relationship Name
+type: Relationship type
+participants:
+  - Entity 1
+  - Entity 2
+description: "Brief description of the relationship"
+---
+
+# Relationship Name
+
+[Detailed description of how the entities interact, historical context, current status, and implications for the broader universe.]
+            </div>
+        </div>
+    </div>
+
+    <div id="guidelines" class="section">
+        <h2>📝 Content Creation Guidelines for AI Agents</h2>
+
+        <div class="warning">
+            <h4>⚠️ Critical Requirements</h4>
+            <ul>
+                <li>Always follow the exact YAML frontmatter structure for each content type</li>
+                <li>Use sequential numbering for planets (001, 002, etc.)</li>
+                <li>Reference existing content when creating connections</li>
+                <li>Maintain consistent tone: mysterious yet scientific</li>
+                <li>Include human perspective in all major content</li>
+            </ul>
+        </div>
+
+        <h3>🎯 Content Creation Workflow</h3>
+        <ol>
+            <li><strong>Research Existing Content:</strong> Review related planets, species, organizations</li>
+            <li><strong>Identify Connections:</strong> Determine how new content relates to existing lore</li>
+            <li><strong>Create Primary Content:</strong> Write the main content file with proper schema</li>
+            <li><strong>Create Supporting Content:</strong> Add related resources, relationships, etc.</li>
+            <li><strong>Update Cross-References:</strong> Add links in existing content where appropriate</li>
+        </ol>
+
+        <h3>📊 Quality Checklist</h3>
+        <ul>
+            <li>✅ Frontmatter follows exact schema format</li>
+            <li>✅ Content includes visual descriptions for rendering</li>
+            <li>✅ Mysterious elements balance with scientific plausibility</li>
+            <li>✅ Human perspective included (expeditions, research, reactions)</li>
+            <li>✅ Connections to at least 2-3 existing entities</li>
+            <li>✅ Consistent terminology with existing content</li>
+            <li>✅ Unresolved mysteries for future development</li>
+        </ul>
+
+        <h3>🚫 Common Pitfalls to Avoid</h3>
+        <ul>
+            <li>Don't make planets too Earth-like</li>
+            <li>Don't resolve all mysteries completely</li>
+            <li>Don't ignore cross-references to existing content</li>
+            <li>Don't use inconsistent naming conventions</li>
+            <li>Don't create content in isolation - always connect to existing lore</li>
+        </ul>
+    </div>
+
+    <div id="universe-lore" class="section">
+        <h2>🌌 Universe Lore Connections</h2>
+        
+        <p>Based on <code>significant_lore_points.md</code>, these are the key thematic elements that connect all content:</p>
+
+        <div class="content-type">
+            <h3>⚛️ Anomalous Physics & Ancient Technologies</h3>
+            <ul>
+                <li><strong>Aetheris:</strong> Graviton core of artificial origin, impossible orbit</li>
+                <li><strong>Ferraxis:</strong> Magcarbon fuel cycle defying conventional physics</li>
+                <li><strong>Theme:</strong> Technology "far beyond known science" suggests vanished civilizations</li>
+            </ul>
+        </div>
+
+        <div class="content-type">
+            <h3>🧬 Extreme Adaptation & Bioengineering</h3>
+            <ul>
+                <li><strong>Calyx-Vehl:</strong> Vhorran Echoclade crystalline beings integrated with planet</li>
+                <li><strong>Solithar:</strong> Nhyrex Confluence bioengineered to harvest light directly</li>
+                <li><strong>Theme:</strong> Species choosing "adaptation over extinction"</li>
+            </ul>
+        </div>
+
+        <div class="content-type">
+            <h3>💰 Unique Resource Economies</h3>
+            <ul>
+                <li><strong>Ferraxis:</strong> Galactic economy centered on Magcarbon regeneration</li>
+                <li><strong>Solithar:</strong> Light as currency and sustenance</li>
+                <li><strong>Theme:</strong> Planets with irreplaceable, unique resources</li>
+            </ul>
+        </div>
+
+        <div class="content-type">
+            <h3>❓ Unexplained Phenomena & Mysteries</h3>
+            <ul>
+                <li><strong>Aetheris:</strong> Graviton core crushing probes, Glasshowl Syndrome</li>
+                <li><strong>Solithar:</strong> Ships' lighting systems responding to planet</li>
+                <li><strong>Theme:</strong> Technologies and effects that defy understanding</li>
+            </ul>
+        </div>
+
+        <div class="content-type">
+            <h3>🤝 Symbiotic Relationships</h3>
+            <ul>
+                <li><strong>Ferraxis:</strong> Industrial-biological symbiosis with humans</li>
+                <li><strong>Calyx-Vehl:</strong> Vhorran integrated as "living instruments in planetary orchestra"</li>
+                <li><strong>Theme:</strong> Deep integration between species and their worlds</li>
+            </ul>
+        </div>
+
+        <div class="content-type">
+            <h3>⚠️ Warnings & Dangers</h3>
+            <ul>
+                <li><strong>Aetheris:</strong> Possible "containment system" or "defensive mechanism"</li>
+                <li><strong>Ferraxis:</strong> Magnetic reversal event could "sterilize the surface"</li>
+                <li><strong>Theme:</strong> Beauty hiding existential threats</li>
+            </ul>
+        </div>
+
+        <div class="tip">
+            <strong>🎯 Lore Integration Tip:</strong> When creating new content, incorporate at least one of these six thematic elements to maintain universe consistency and depth.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📚 Quick Reference</h2>
+        
+        <h3>🔗 Key Files for AI Agents</h3>
+        <ul>
+            <li><code>src/content/config.ts</code> - Schema definitions for all content types</li>
+            <li><code>content_guidelines.md</code> - Original content creation guidelines</li>
+            <li><code>PLANET_TEMPLATE.md</code> - Detailed planet creation template</li>
+            <li><code>src/content/lore_connections/significant_lore_points.md</code> - Universe themes</li>
+        </ul>
+
+        <h3>🎯 Content Priorities</h3>
+        <ol>
+            <li><strong>Planets</strong> are the primary content - everything else supports them</li>
+            <li><strong>Species</strong> should be unique and adapted to their worlds</li>
+            <li><strong>Resources</strong> drive economic and political relationships</li>
+            <li><strong>Organizations</strong> provide human/galactic perspective</li>
+            <li><strong>Relationships</strong> tie everything together narratively</li>
+        </ol>
+
+        <div class="warning">
+            <h4>🚨 Remember</h4>
+            <p>This wiki serves a dual purpose: it's both a reference for the procedural planet NFT project AND a rich science fiction universe. Content should be engaging for collectors while maintaining deep lore consistency for worldbuilding.</p>
+        </div>
+    </div>
+
+    <footer style="text-align: center; margin-top: 50px; padding: 20px; color: #64748b; border-top: 1px solid #334155;">
+        <p>🌌 Distant Worlds Wiki Documentation | Created for AI Agent Reference</p>
+        <p>Last Updated: 2024-06-16 | Next Update: As content expands</p>
+    </footer>
+</body>
+</html>
