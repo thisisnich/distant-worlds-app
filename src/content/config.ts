@@ -125,6 +125,21 @@ const loreConnectionsCollection = defineCollection({
   }),
 });
 
+// Define the schema for organizations
+const organizationsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    organization_id: z.string(),
+    name: z.string(),
+    type: z.string().optional(),
+    location: z.string().optional(),
+    description: z.string(),
+    purpose: z.string().optional(),
+    membership: z.string().optional(),
+    influence: z.string().optional(),
+  }),
+});
+
 // Export the collections
 export const collections = {
   'planets': planetsCollection,
@@ -136,4 +151,5 @@ export const collections = {
   'technology': technologyCollection,
   'concepts': conceptsCollection,
   'lore_connections': loreConnectionsCollection,
+  'organizations': organizationsCollection,
 }; 

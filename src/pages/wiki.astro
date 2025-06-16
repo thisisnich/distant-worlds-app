@@ -13,6 +13,7 @@ const technology = await getCollection('technology');
 const concepts = await getCollection('concepts');
 const relationships = await getCollection('relationships');
 const loreConnections = await getCollection('lore_connections');
+const organizations = await getCollection('organizations');
 ---
 
 <BaseLayout title="Wiki - Distant Worlds">
@@ -75,6 +76,12 @@ const loreConnections = await getCollection('lore_connections');
                     <h2><a href="/lore-connections">📚 Lore Connections</a> <span class="count">({loreConnections.length})</span></h2>
                     <p>Discover the intricate web of connections that bind the Distant Worlds universe together.</p>
                     <a href="/lore-connections" class="view-all-link">View all lore connections →</a>
+                </section>
+
+                <section class="wiki-section">
+                    <h2><a href="/organizations">🏛️ Organizations</a> <span class="count">({organizations.length})</span></h2>
+                    <p>Explore the guilds, associations, and organizations that shape the social and political landscape.</p>
+                    <a href="/organizations" class="view-all-link">View all organizations →</a>
                 </section>
             </div>
         </div>
