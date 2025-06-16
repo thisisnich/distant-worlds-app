@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import '../../styles/wiki.css';
+
+const resources = await getCollection('resources');
+---
+
+<BaseLayout title="Resources - Distant Worlds">
+    <div class="wiki-container">
+        <a href="/" class="back-button">← Back to Home</a>
+        <div class="wiki-content">
+            <h1>Resources</h1>
+            <p>Discover the unique materials, minerals, and energy sources found throughout the Distant Worlds universe.</p>
+            
+            <div class="item-grid">
+                {resources.map((resource) => (
+                    <div class="item-card">
+                        <h3><a href={`/resources/${resource.slug}`}>{resource.data.name}</a></h3>
+                        <p class="description">{resource.data.description}</p>
+                        {resource.data.type && (
+                            <p class="meta"><strong>Type:</strong> {resource.data.type}</p>
+                        )}
+                        {resource.data.origin && (
+                            <p class="meta"><strong>Origin:</strong> {resource.data.origin}</p>
+                        )}
+                        {resource.data.rarity && (
+                            <p class="meta"><strong>Rarity:</strong> {resource.data.rarity}</p>
+                        )}
+                        {resource.data.uses && resource.data.uses.length > 0 && (
+                            <p class="meta"><strong>Uses:</strong> {resource.data.uses.join(', ')}</p>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</BaseLayout> 

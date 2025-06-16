@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import '../../styles/wiki.css';
+
+const places = await getCollection('places');
+---
+
+<BaseLayout title="Places - Distant Worlds">
+    <div class="wiki-container">
+        <a href="/" class="back-button">← Back to Home</a>
+        <div class="wiki-content">
+            <h1>Places</h1>
+            <p>Discover significant locations, landmarks, and regions throughout the Distant Worlds universe.</p>
+            
+            <div class="item-grid">
+                {places.map((place) => (
+                    <div class="item-card">
+                        <h3><a href={`/places/${place.slug}`}>{place.data.name}</a></h3>
+                        <p class="description">{place.data.description}</p>
+                        {place.data.location && (
+                            <p class="meta"><strong>Location:</strong> {place.data.location}</p>
+                        )}
+                        {place.data.type && (
+                            <p class="meta"><strong>Type:</strong> {place.data.type}</p>
+                        )}
+                        {place.data.significance && (
+                            <p class="meta"><strong>Significance:</strong> {place.data.significance}</p>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</BaseLayout> 

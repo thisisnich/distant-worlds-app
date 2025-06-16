@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import '../../styles/wiki.css';
+
+const loreConnections = await getCollection('lore_connections');
+---
+
+<BaseLayout title="Lore Connections - Distant Worlds">
+    <div class="wiki-container">
+        <a href="/" class="back-button">← Back to Home</a>
+        <div class="wiki-content">
+            <h1>Lore Connections</h1>
+            <p>Discover the intricate web of connections that bind the Distant Worlds universe together.</p>
+            
+            <div class="item-grid">
+                {loreConnections.map((connection) => (
+                    <div class="item-card">
+                        <h3><a href={`/lore-connections/${connection.slug}`}>{connection.data.name}</a></h3>
+                        <p class="description">{connection.data.description}</p>
+                        {connection.data.type && (
+                            <p class="meta"><strong>Type:</strong> {connection.data.type}</p>
+                        )}
+                        {connection.data.entities && connection.data.entities.length > 0 && (
+                            <p class="meta"><strong>Entities:</strong> {connection.data.entities.join(', ')}</p>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</BaseLayout> 

@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import '../../styles/wiki.css';
+
+const technology = await getCollection('technology');
+---
+
+<BaseLayout title="Technology - Distant Worlds">
+    <div class="wiki-container">
+        <a href="/" class="back-button">← Back to Home</a>
+        <div class="wiki-content">
+            <h1>Technology</h1>
+            <p>Explore the advanced technologies and innovations found throughout the Distant Worlds universe.</p>
+            
+            <div class="item-grid">
+                {technology.map((tech) => (
+                    <div class="item-card">
+                        <h3><a href={`/technology/${tech.slug}`}>{tech.data.name}</a></h3>
+                        <p class="description">{tech.data.description}</p>
+                        {tech.data.origin && (
+                            <p class="meta"><strong>Origin:</strong> {tech.data.origin}</p>
+                        )}
+                        {tech.data.type && (
+                            <p class="meta"><strong>Type:</strong> {tech.data.type}</p>
+                        )}
+                        {tech.data.complexity && (
+                            <p class="meta"><strong>Complexity:</strong> {tech.data.complexity}</p>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</BaseLayout> 

@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import '../../styles/wiki.css';
+
+const species = await getCollection('species');
+---
+
+<BaseLayout title="Species - Distant Worlds">
+    <div class="wiki-container">
+        <a href="/" class="back-button">← Back to Home</a>
+        <div class="wiki-content">
+            <h1>Species</h1>
+            <p>Explore the diverse life forms that inhabit the worlds of the Distant Worlds universe.</p>
+            
+            <div class="item-grid">
+                {species.map((speciesItem) => (
+                    <div class="item-card">
+                        <h3><a href={`/species/${speciesItem.slug}`}>{speciesItem.data.name}</a></h3>
+                        <p class="description">{speciesItem.data.description}</p>
+                        {speciesItem.data.scientific_name && (
+                            <p class="meta"><strong>Scientific Name:</strong> <em>{speciesItem.data.scientific_name}</em></p>
+                        )}
+                        {speciesItem.data.origin && (
+                            <p class="meta"><strong>Origin:</strong> {speciesItem.data.origin}</p>
+                        )}
+                        {speciesItem.data.classification && (
+                            <p class="meta"><strong>Classification:</strong> {speciesItem.data.classification}</p>
+                        )}
+                        {speciesItem.data.habitat && (
+                            <p class="meta"><strong>Habitat:</strong> {speciesItem.data.habitat}</p>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</BaseLayout> 

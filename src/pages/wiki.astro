@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import '../styles/wiki.css';
+
+// Get collection counts
+const planets = await getCollection('planets');
+const species = await getCollection('species');
+const resources = await getCollection('resources');
+const places = await getCollection('places');
+const features = await getCollection('features');
+const technology = await getCollection('technology');
+const concepts = await getCollection('concepts');
+const relationships = await getCollection('relationships');
+const loreConnections = await getCollection('lore_connections');
+---
+
+<BaseLayout title="Wiki - Distant Worlds">
+    <div class="wiki-container">
+        <a href="/" class="back-button">← Back to Home</a>
+        <div class="wiki-content">
+            <h1>Distant Worlds Wiki</h1>
+            <p>Explore the vast universe of Distant Worlds through our comprehensive knowledge base. Discover planets, species, resources, and the complex relationships that bind them together.</p>
+            
+            <div class="wiki-sections">
+                <section class="wiki-section">
+                    <h2><a href="/planets">🪐 Planets</a> <span class="count">({planets.length})</span></h2>
+                    <p>Explore the diverse worlds that make up the Distant Worlds universe, each with unique characteristics, resources, and life forms.</p>
+                    <a href="/planets" class="view-all-link">View all planets →</a>
+                </section>
+
+                <section class="wiki-section">
+                    <h2><a href="/species">🧬 Species</a> <span class="count">({species.length})</span></h2>
+                    <p>Discover the unique life forms that inhabit the worlds of the Distant Worlds universe.</p>
+                    <a href="/species" class="view-all-link">View all species →</a>
+                </section>
+
+                <section class="wiki-section">
+                    <h2><a href="/resources">⚡ Resources</a> <span class="count">({resources.length})</span></h2>
+                    <p>Learn about the unique materials, minerals, and energy sources found throughout the universe.</p>
+                    <a href="/resources" class="view-all-link">View all resources →</a>
+                </section>
+
+                <section class="wiki-section">
+                    <h2><a href="/places">🏛️ Places</a> <span class="count">({places.length})</span></h2>
+                    <p>Explore significant locations, landmarks, and regions throughout the Distant Worlds universe.</p>
+                    <a href="/places" class="view-all-link">View all places →</a>
+                </section>
+
+                <section class="wiki-section">
+                    <h2><a href="/features">🌋 Features</a> <span class="count">({features.length})</span></h2>
+                    <p>Discover unique planetary features and natural phenomena across different worlds.</p>
+                    <a href="/features" class="view-all-link">View all features →</a>
+                </section>
+
+                <section class="wiki-section">
+                    <h2><a href="/technology">🔬 Technology</a> <span class="count">({technology.length})</span></h2>
+                    <p>Explore the advanced technologies and innovations found throughout the universe.</p>
+                    <a href="/technology" class="view-all-link">View all technology →</a>
+                </section>
+
+                <section class="wiki-section">
+                    <h2><a href="/concepts">💭 Concepts</a> <span class="count">({concepts.length})</span></h2>
+                    <p>Understand important ideas, theories, and phenomena that shape the Distant Worlds universe.</p>
+                    <a href="/concepts" class="view-all-link">View all concepts →</a>
+                </section>
+
+                <section class="wiki-section">
+                    <h2><a href="/relationships">🔗 Relationships</a> <span class="count">({relationships.length})</span></h2>
+                    <p>Explore the complex relationships and symbioses between different entities in the universe.</p>
+                    <a href="/relationships" class="view-all-link">View all relationships →</a>
+                </section>
+
+                <section class="wiki-section">
+                    <h2><a href="/lore-connections">📚 Lore Connections</a> <span class="count">({loreConnections.length})</span></h2>
+                    <p>Discover the intricate web of connections that bind the Distant Worlds universe together.</p>
+                    <a href="/lore-connections" class="view-all-link">View all lore connections →</a>
+                </section>
+            </div>
+        </div>
+    </div>
+</BaseLayout>
+
+<style>
+    .wiki-sections {
+        display: grid;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .wiki-section {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .wiki-section:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .wiki-section h2 {
+        margin: 0 0 1rem 0;
+        font-size: 1.25rem;
+    }
+
+    .wiki-section h2 a {
+        color: #e6e6fa;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .wiki-section h2 a:hover {
+        color: #ffa500;
+    }
+
+    .count {
+        color: #ffa500;
+        font-size: 0.9rem;
+        font-weight: normal;
+    }
+
+    .wiki-section p {
+        margin: 0 0 1rem 0;
+        color: #b8b8b8;
+        line-height: 1.5;
+    }
+
+    .view-all-link {
+        color: #ffa500;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: color 0.2s ease;
+    }
+
+    .view-all-link:hover {
+        color: #ffb84d;
+    }
+
+    @media (max-width: 768px) {
+        .wiki-sections {
+            grid-template-columns: 1fr;
+        }
+    }
+</style> 

@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import '../../styles/wiki.css';
+
+const features = await getCollection('features');
+---
+
+<BaseLayout title="Features - Distant Worlds">
+    <div class="wiki-container">
+        <a href="/" class="back-button">← Back to Home</a>
+        <div class="wiki-content">
+            <h1>Planetary Features</h1>
+            <p>Discover unique planetary features and natural phenomena across different worlds in the Distant Worlds universe.</p>
+            
+            <div class="item-grid">
+                {features.map((feature) => (
+                    <div class="item-card">
+                        <h3><a href={`/features/${feature.slug}`}>{feature.data.name}</a></h3>
+                        <p class="description">{feature.data.description}</p>
+                        {feature.data.planet && (
+                            <p class="meta"><strong>Planet:</strong> {feature.data.planet}</p>
+                        )}
+                        {feature.data.type && (
+                            <p class="meta"><strong>Type:</strong> {feature.data.type}</p>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</BaseLayout> 
