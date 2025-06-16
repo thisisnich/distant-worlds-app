@@ -1,0 +1,10 @@
+# Crystalline Resonance Chambers
+
+**Type:** Resource/Architectural Element
+**Associated Planet:** Calyx-Vehl
+
+## Description
+Crystalline resonance chambers are vast networks of polished structures that form the cities of the Vhorran Echoclade. These chambers are designed to harness the planet's constant vibrations.
+
+## Significance
+Every vibration within these chambers carries meaning, memory, and prophecy for the Vhorran, as they have built their civilization from sound itself. They are essential for Vhorran communication and societal function. 
