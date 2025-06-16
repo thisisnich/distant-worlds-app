@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/planet-details.css';
 
 interface PlanetFrontmatter {
     planet_id: string;
@@ -61,13 +62,60 @@ const price = getPlanetPrice(planet);
 // Get the full compiled markdown content
 const fullContent = await planet.compiledContent();
 const extendedLoreHeader = '<h2 id="extended-lore-worldbuilding--deeper-reading">Extended Lore (worldbuilding &#x26; deeper reading)</h2>';
+const relatedLoreHeader = '<h2 id="related-lore">Related Lore</h2>';
 const startIndex = fullContent.indexOf(extendedLoreHeader);
+const relatedLoreStartIndex = fullContent.indexOf(relatedLoreHeader);
 
 let filteredContent = '';
+let relatedLoreContent = '';
+
 if (startIndex !== -1) {
-    filteredContent = fullContent.substring(startIndex);
+    if (relatedLoreStartIndex !== -1 && relatedLoreStartIndex > startIndex) {
+        filteredContent = fullContent.substring(startIndex, relatedLoreStartIndex);
+        relatedLoreContent = fullContent.substring(relatedLoreStartIndex);
+    } else {
+        filteredContent = fullContent.substring(startIndex);
+    }
     filteredContent = filteredContent.replace(extendedLoreHeader, '<h2>Extended Lore</h2>');
 }
+
+// Define an interface for related lore items
+interface RelatedLoreItem {
+    text: string;
+    url: string;
+}
+
+// Function to parse related lore links
+function parseRelatedLore(content: string) {
+    const categories: { species: RelatedLoreItem[]; resources: RelatedLoreItem[]; relationships: RelatedLoreItem[] } = {
+        species: [],
+        resources: [],
+        relationships: []
+    };
+    const lines = content.split('\n');
+    let currentCategory = '';
+
+    for (const line of lines) {
+        if (line.includes('### Species')) {
+            currentCategory = 'species';
+        } else if (line.includes('### Resources')) {
+            currentCategory = 'resources';
+        } else if (line.includes('### Relationships')) {
+            currentCategory = 'relationships';
+        } else if (line.startsWith('*   ') && currentCategory) {
+            const match = line.match(/\*\\s*\\[(.*?)\\]\\((.*?)\\)/);
+            if (match && match[1] && match[2]) {
+                categories[currentCategory as keyof typeof categories].push({
+                    text: match[1],
+                    url: match[2]
+                });
+            }
+        }
+    }
+    return categories;
+}
+
+const relatedLore = parseRelatedLore(relatedLoreContent);
 ---
 
 <BaseLayout title={`Claim ${planet.frontmatter.name} - Distant Worlds`}>
@@ -366,14 +414,56 @@ if (startIndex !== -1) {
                 position: static;
             }
         }
+        
+        .related-lore-section {
+            background: rgba(22, 27, 34, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(48, 54, 61, 0.6);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            color: white;
+        }
+
+        .related-lore-section h3 {
+            color: #00d4ff;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.6em;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .related-lore-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .related-lore-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .related-lore-section a {
+            color: #9333ea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .related-lore-section a:hover {
+            color: #c780ff;
+            text-decoration: underline;
+        }
     </style>
 
     <a href="/" class="back-button">← Back to Collection</a>
 
     <div class="claim-container">
-        <div class="planet-hero" style={`background-image: url('${imagePath}')`}>
+        <div class="planet-hero" style={`background-image: url('${imagePath}');`}>
             <div class="hero-content">
-                <div class="planet-id-hero">Planet #{planet.frontmatter.planet_id}</div>
+                <div class="planet-id-hero">{planet.frontmatter.planet_id.toString().padStart(3, '0')}</div>
                 <h1 class="planet-name-hero">{planet.frontmatter.name}</h1>
                 <p class="planet-scientific-hero">{planet.frontmatter.scientific_name}</p>
             </div>
@@ -467,6 +557,42 @@ if (startIndex !== -1) {
         {filteredContent && (
             <div class="lore-section">
                 <div set:html={filteredContent} />
+            </div>
+        )}
+
+        {Object.keys(relatedLore).some(category => relatedLore[category as keyof typeof relatedLore].length > 0) && (
+            <div class="related-lore-section">
+                <h2>Related Lore</h2>
+                {relatedLore.species.length > 0 && (
+                    <>
+                        <h3>Species</h3>
+                        <ul>
+                            {relatedLore.species.map(item => (
+                                <li><a href={item.url}>{item.text}</a></li>
+                            ))}
+                        </ul>
+                    </>
+                )}
+                {relatedLore.resources.length > 0 && (
+                    <>
+                        <h3>Resources</h3>
+                        <ul>
+                            {relatedLore.resources.map(item => (
+                                <li><a href={item.url}>{item.text}</a></li>
+                            ))}
+                        </ul>
+                    </>
+                )}
+                {relatedLore.relationships.length > 0 && (
+                    <>
+                        <h3>Relationships</h3>
+                        <ul>
+                            {relatedLore.relationships.map(item => (
+                                <li><a href={item.url}>{item.text}</a></li>
+                            ))}
+                        </ul>
+                    </>
+                )}
             </div>
         )}
     </div>
