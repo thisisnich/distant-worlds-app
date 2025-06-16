@@ -17,7 +17,7 @@ The Vanguard Sciences Collective represents the official face of humanity's inte
 
 The Vanguard Sciences Collective was established as humanity expanded beyond Earth, recognizing the need for coordinated exploration and research efforts across multiple star systems. As anomalous worlds were discovered, the Collective became the primary organization responsible for official investigation and contact protocols.
 
-The Collective's most defining moment came with the discovery of Aetheris. While AI-driven survey systems and other alien civilizations classified the planet as unviable, human researchers insisted on continued study. This decision led to the establishment of a permanent watch station in a nearby star system, making Aetheris the Collective's longest-running and most resource-intensive research project.
+The Collective's most defining moment came with the discovery of Aetheris. While AI-driven survey systems and other alien civilizations classified the planet as unviable, human researchers insisted on continued study. This decision led to the establishment of a permanent watch station in a nearby star system, making Aetheris one of the Collective's longest-running research projects.
 
 ## Structure and Operations
 
@@ -76,10 +76,10 @@ The Collective frequently clashes with AI-driven survey organizations that prior
 ## Current Challenges
 
 The Collective faces several ongoing difficulties:
-- **Resource Drain**: The Aetheris project consumes enormous amounts of funding and equipment
 - **Political Pressure**: Some member governments question the continued investment in dangerous research
 - **Personnel Losses**: Expeditions to anomalous worlds carry significant risks to human life
 - **Scientific Skepticism**: Mainstream academic institutions sometimes challenge the Collective's methods
+- **Coordination Complexity**: Managing research efforts across such a vast galactic organization presents logistical challenges
 
 ## Recent Developments
 
