@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/planet-details.css';
+import '../../styles/wiki.css';
 
 interface PlanetFrontmatter {
     planet_id: string;
@@ -19,6 +20,7 @@ interface PlanetFrontmatter {
     description: string;
     claimed_no?: number;
     opensea_link?: string;
+    images?: string[];
 }
 
 interface MarkdownModule {
@@ -192,6 +194,8 @@ const relatedLore = parseRelatedLore(relatedLoreContent);
 // console.log('relatedLoreContent (raw, first 500 chars):', relatedLoreContent.substring(0, 500));
 // console.log('Parsed relatedLore object:', JSON.stringify(relatedLore, null, 2));
 // DEBUGGING RELATED LORE - END
+
+const planetImages = planet.frontmatter.images || [];
 
 ---
 
@@ -562,7 +566,26 @@ const relatedLore = parseRelatedLore(relatedLoreContent);
     <a href="/" class="back-button">← Back to Collection</a>
 
     <div class="claim-container">
-        <div class="planet-hero" style={`background-image: url('${imagePath}');`}>
+        {planetImages.length > 0 && (
+            <div class="image-gallery">
+                {planetImages.length > 1 ? (
+                    <div class="carousel-container">
+                        <div class="carousel-images">
+                            {planetImages.map(src => <img src={src} alt={planet.frontmatter.name} />)}
+                        </div>
+                        <div class="carousel-nav">
+                            {planetImages.map((_, index) => (
+                                <button class="nav-dot" data-slide={index}></button>
+                            ))}
+                        </div>
+                    </div>
+                ) : (
+                    <img src={planetImages[0]} alt={planet.frontmatter.name} class="single-image"/>
+                )}
+            </div>
+        )}
+
+        <div class="planet-hero" style={`background-image: url(${imagePath});`}>
             <div class="hero-content">
                 <div class="planet-id-hero">{planet.frontmatter.planet_id.toString().padStart(3, '0')}</div>
                 <h1 class="planet-name-hero">{planet.frontmatter.name}</h1>
@@ -792,4 +815,35 @@ const relatedLore = parseRelatedLore(relatedLoreContent);
             </div>
         )}
     </div>
+
+    <script is:inline>
+        document.addEventListener('DOMContentLoaded', () => {
+            const carouselContainers = document.querySelectorAll('.carousel-container');
+            carouselContainers.forEach(container => {
+                const images = container.querySelector('.carousel-images');
+                const dots = container.querySelectorAll('.nav-dot');
+                let currentSlide = 0;
+
+                const updateCarousel = () => {
+                    images.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    dots.forEach((dot, index) => {
+                        if (index === currentSlide) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
+                        }
+                    });
+                };
+
+                dots.forEach(dot => {
+                    dot.addEventListener('click', (e) => {
+                        currentSlide = parseInt(e.target.dataset.slide);
+                        updateCarousel();
+                    });
+                });
+
+                updateCarousel(); // Initialize carousel
+            });
+        });
+    </script>
 </BaseLayout> 

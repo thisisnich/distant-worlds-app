@@ -1,41 +1,83 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 import '../../styles/wiki.css';
 
-interface SpeciesModule {
-    default: any;
-    compiledContent(): string;
-}
-
 export async function getStaticPaths() {
-    const speciesFiles = Object.entries(import.meta.glob<SpeciesModule>('../../content/species/*.md', { eager: true }));
-
-    return speciesFiles.map(([path, species]) => {
-        const slug = path.split('/').pop()?.replace('.md', '') || '';
+    const species = await getCollection('species');
+    return species.map((specie) => {
         return {
-            params: { slug },
-            props: { species, slug },
+            params: { slug: specie.slug },
+            props: { specie }
         };
     });
 }
 
-const { species, slug } = Astro.props as { species: SpeciesModule; slug: string };
-
-// Get the full compiled markdown content
-const fullContent = await species.compiledContent();
+const { specie } = Astro.props;
+const { Content } = await specie.render();
 
 // Generate a title from the slug
-const title = slug.split('_').map(word => 
+const title = specie.slug.split('_').map(word => 
     word.charAt(0).toUpperCase() + word.slice(1)
 ).join(' ');
+
+const images = specie.data.images || [];
 ---
 
 <BaseLayout title={`${title} - Distant Worlds Species`}>
-    <a href="/" class="back-button">← Back to Collection</a>
-
     <div class="wiki-container">
+        <a href="/species" class="back-button">← Back to Species</a>
         <div class="wiki-content">
-            <div set:html={fullContent} />
+            {images.length > 0 && (
+                <div class="image-gallery">
+                    {images.length > 1 ? (
+                        <div class="carousel-container">
+                            <div class="carousel-images">
+                                {images.map(src => <img src={src} alt={title} />)}
+                            </div>
+                            <div class="carousel-nav">
+                                {images.map((_, index) => (
+                                    <button class="nav-dot" data-slide={index}></button>
+                                ))}
+                            </div>
+                        </div>
+                    ) : (
+                        <img src={images[0]} alt={title} class="single-image"/>
+                    )}
+                </div>
+            )}
+            <Content />
         </div>
     </div>
-</BaseLayout> 
+</BaseLayout>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        const carouselContainers = document.querySelectorAll('.carousel-container');
+        carouselContainers.forEach(container => {
+            const images = container.querySelector('.carousel-images');
+            const dots = container.querySelectorAll('.nav-dot');
+            let currentSlide = 0;
+
+            const updateCarousel = () => {
+                images.style.transform = `translateX(-${currentSlide * 100}%)`;
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            };
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', (e) => {
+                    currentSlide = parseInt(e.target.dataset.slide);
+                    updateCarousel();
+                });
+            });
+
+            updateCarousel(); // Initialize carousel
+        });
+    });
+</script> 
