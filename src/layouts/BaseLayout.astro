@@ -521,24 +521,32 @@ import '../styles/nav.css';
 				// Wiki dropdown toggle functionality
 				const dropdownToggle = document.querySelector('.dropdown-toggle');
 				const dropdown = document.querySelector('.nav-dropdown');
+				const dropdownContent = document.querySelector('.dropdown-content'); // Get the actual content div
 
-				if (dropdownToggle && dropdown) {
+				if (dropdownToggle && dropdown && dropdownContent) {
 					dropdownToggle.addEventListener('click', (e) => {
-						e.preventDefault();
-						dropdown.classList.toggle('active');
-					});
-
-					// Close dropdown when clicking outside
-					document.addEventListener('click', (e) => {
-						if (!dropdown.contains(e.target)) {
-							dropdown.classList.remove('active');
+						if (e.shiftKey || e.ctrlKey || e.metaKey || e.button === 1) {
+							// Special click: allow default navigation to /wiki
+						} else {
+							// Normal click: prevent default link behavior and toggle display directly
+							e.preventDefault();
+							if (dropdownContent.style.display === 'block') {
+								dropdownContent.style.display = 'none';
+								dropdown.classList.remove('active'); // Keep class in sync
+							} else {
+								dropdownContent.style.display = 'block';
+								dropdown.classList.add('active'); // Keep class in sync
+							}
 						}
 					});
 
-					// Navigate to wiki when shift+clicking or middle-clicking
-					dropdownToggle.addEventListener('click', (e) => {
-						if (e.shiftKey || e.ctrlKey || e.metaKey || e.button === 1) {
-							window.location.href = '/wiki';
+					// Close dropdown when clicking outside the entire .nav-dropdown element
+					document.addEventListener('click', (e) => {
+						// If the click target is outside the dropdown (the <li>)
+						// AND the dropdown content is currently visible
+						if (!dropdown.contains(e.target) && dropdownContent.style.display === 'block') {
+							dropdownContent.style.display = 'none';
+							dropdown.classList.remove('active'); // Keep class in sync
 						}
 					});
 				}

@@ -85,10 +85,13 @@
 }
 
 /* Also keep hover functionality for better UX */
+/* This rule will be removed to rely solely on JavaScript for toggling */
+/*
 .nav-dropdown:hover .dropdown-content {
 	display: block;
 	animation: fadeIn 0.3s ease;
 }
+*/
 
 @keyframes fadeIn {
 	from {
