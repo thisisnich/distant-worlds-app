@@ -574,5 +574,38 @@ import '../styles/nav.css';
 			<div class="stars-large"></div>
 		</div>
 		<slot />
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const dropdowns = document.querySelectorAll('.nav-dropdown > a');
+
+				dropdowns.forEach(dropdown => {
+					dropdown.addEventListener('click', function (event) {
+						// Only prevent default if it's a dropdown trigger, not a direct link
+						const target = event.target as HTMLElement;
+						if (target.parentNode && (target.parentNode as HTMLElement).classList.contains('nav-dropdown')) {
+							event.preventDefault();
+							const parentDropdown = target.parentNode as HTMLElement;
+							// Close other open dropdowns
+							document.querySelectorAll('.nav-dropdown.active').forEach(openDropdown => {
+								if (openDropdown !== parentDropdown) {
+									(openDropdown as HTMLElement).classList.remove('active');
+								}
+							});
+							parentDropdown.classList.toggle('active');
+						}
+					});
+				});
+
+				// Close dropdowns when clicking outside
+				document.addEventListener('click', function (event) {
+					const target = event.target as HTMLElement;
+					if (!target.closest('.nav-dropdown')) {
+						document.querySelectorAll('.nav-dropdown.active').forEach(dropdown => {
+							(dropdown as HTMLElement).classList.remove('active');
+						});
+					}
+				});
+			});
+		</script>
 	</body>
 </html> 

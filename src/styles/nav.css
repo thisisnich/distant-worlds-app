@@ -135,4 +135,16 @@
 	.nav-dropdown.active .dropdown-content {
 		display: block;
 	}
+
+	/* Redefine fadeIn keyframes for mobile */
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(-10px); /* Only vertical transform for mobile */
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0); /* Only vertical transform for mobile */
+		}
+	}
 } 
