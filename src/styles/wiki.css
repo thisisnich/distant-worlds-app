@@ -19,19 +19,22 @@
 
 .back-button {
     position: fixed;
-    top: 20px;
-    left: 2rem;
+    top: 40px;
+    left: 30px;
     background: rgba(22, 27, 34, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(48, 54, 61, 0.6);
     color: white;
-    padding: 12px 20px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 12px;
-    text-decoration: none;
-    font-weight: 600;
     transition: all 0.3s ease;
     z-index: 1000;
+    font-size: 1.8em;
 }
 
 .back-button:hover {
