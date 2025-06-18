@@ -6,9 +6,9 @@ import '../../styles/wiki.css';
 const features = await getCollection('features');
 ---
 
-<BaseLayout title="Features - Distant Worlds">
+<BaseLayout title="Features - Distant Worlds" currentPath={Astro.url.pathname}>
     <div class="wiki-container">
-        <a href="/" class="back-button">←</a>
+        
         <div class="wiki-content">
             <h1>Planetary Features</h1>
             <p>Discover unique planetary features and natural phenomena across different worlds in the Distant Worlds universe.</p>

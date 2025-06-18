@@ -6,9 +6,9 @@ import '../../styles/wiki.css';
 const resources = await getCollection('resources');
 ---
 
-<BaseLayout title="Resources - Distant Worlds">
+<BaseLayout title="Resources - Distant Worlds" currentPath={Astro.url.pathname}>
     <div class="wiki-container">
-        <a href="/" class="back-button">←</a>
+        
         <div class="wiki-content">
             <h1>Resources</h1>
             <p>Discover the unique materials, minerals, and energy sources found throughout the Distant Worlds universe.</p>

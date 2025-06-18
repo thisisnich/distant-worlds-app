@@ -24,9 +24,8 @@ const title = feature.slug.split('_').map(word =>
 const images = feature.data.images || [];
 ---
 
-<BaseLayout title={`${title} - Distant Worlds Features`}>
+<BaseLayout title={`${title} - Distant Worlds Features`} currentPath={Astro.url.pathname}>
     <div class="wiki-container">
-        <a href="/features" class="back-button">←</a>
         <div class="wiki-content">
             {images.length > 0 && (
                 <div class="image-gallery">

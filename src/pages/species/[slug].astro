@@ -24,9 +24,8 @@ const title = specie.slug.split('_').map(word =>
 const images = specie.data.images || [];
 ---
 
-<BaseLayout title={`${title} - Distant Worlds Species`}>
+<BaseLayout title={`${title} - Distant Worlds Species`} currentPath={Astro.url.pathname}>
     <div class="wiki-container">
-        <a href="/species" class="back-button">←</a>
         <div class="wiki-content">
             {images.length > 0 && (
                 <div class="image-gallery">

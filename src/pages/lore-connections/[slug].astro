@@ -24,9 +24,8 @@ const title = loreConnection.slug.split('_').map(word =>
 const images = loreConnection.data.images || [];
 ---
 
-<BaseLayout title={`${title} - Distant Worlds Lore Connections`}>
+<BaseLayout title={`${title} - Distant Worlds Lore Connections`} currentPath={Astro.url.pathname}>
     <div class="wiki-container">
-        <a href="/lore-connections" class="back-button">←</a>
         <div class="wiki-content">
             {images.length > 0 && (
                 <div class="image-gallery">

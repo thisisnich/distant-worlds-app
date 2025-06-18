@@ -1,9 +1,10 @@
 ---
 interface Props {
 	title: string;
+	currentPath?: string;
 }
 
-const { title } = Astro.props;
+const { title, currentPath } = Astro.props;
 import '../styles/nav.css';
 ---
 
@@ -25,26 +26,27 @@ import '../styles/nav.css';
 				--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
 			}
 			html {
+				box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 				font-family: 'Inter', sans-serif;
-				background-color: #0d1117;
+				background-color: #0d1117; /* Reverted to original dark background */
 				color: #c9d1d9;
-				/* overflow-x: hidden; */
+				overflow-x: hidden; /* Ensure no horizontal scrollbar */
 				margin: 0;
 				padding: 0;
 			}
 			body {
-				margin: 0;
+				box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+				margin: 0 auto; /* Center the body horizontally and remove default margins */
 				/* padding: 0; */ /* Removed as padding-top is now specific */
-				box-sizing: border-box;
 				min-height: 100vh;
 				display: flex;
 				flex-direction: column;
-				align-items: center;
-				padding-top: 82px; /* Updated to match navbar height (50px) + padding (2rem = 32px) */
-				background: #0d1117; /* Dark background */
+				padding-top: 76px; /* Updated to match exact navbar height (60px) + vertical padding (2 * 0.5rem = 16px) */
+				background: #0d1117; /* Reverted to original dark background */
 				color: #c9d1d9; /* Light text */
 				position: relative;
 				/* overflow: hidden; */
+				width: 100%; /* Ensure body takes full width */
 			}
 			h1, h2, h3, h4, h5, h6 {
 				font-family: 'Orbitron', sans-serif;
@@ -57,7 +59,7 @@ import '../styles/nav.css';
 				width: 100%;
 				height: 100%;
 				pointer-events: none;
-				z-index: 0; /* Reverted to ensure stars are behind content */
+				z-index: 0; /* Reverted to original z-index */
 				overflow: hidden;
 			}
 
@@ -69,7 +71,7 @@ import '../styles/nav.css';
 				height: 1px; /* Set base height for box-shadow */
 				background: transparent;
 				border-radius: 50%; /* Make stars round */
-				z-index: -1; /* Reverted to ensure stars are behind content */
+				z-index: -1; /* Reverted to original z-index */
 			}
 
 			.stars-small {
@@ -94,7 +96,7 @@ import '../styles/nav.css';
 				margin: 0 auto;
 				padding: 2rem;
 				position: relative;
-				z-index: 1;
+				z-index: 1; /* Reverted to original z-index */
 			}
 			.hero {
 				text-align: center;
@@ -488,6 +490,29 @@ import '../styles/nav.css';
 				margin: 2.5rem 0;
 			}
 
+			/* Back button style (moved from planet-details.css/planets/[slug].astro) */
+			.back-button-navbar {
+				background: rgba(22, 27, 34, 0.8);
+				backdrop-filter: blur(12px);
+				-webkit-backdrop-filter: blur(12px);
+				border: 1px solid rgba(48, 54, 61, 0.6);
+				color: white;
+				padding: 3px 8px; /* Adjusted from 6px 12px */
+				border-radius: 10px; /* Slightly adjusted for better aesthetics */
+				text-decoration: none;
+				font-weight: 700;
+				transition: all 0.3s ease;
+				z-index: 1000; /* Ensure it's above other content */
+				font-size: 0.8em; /* Adjusted from 0.9em */
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				margin-left: 1rem; /* Space from other navbar elements */
+			}
+			.back-button-navbar:hover {
+				background: rgba(22, 27, 34, 0.95);
+				transform: translateY(-2px); /* Slight lift on hover */
+				box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+			}
 
 		</style>
 		<script is:inline>
@@ -554,33 +579,39 @@ import '../styles/nav.css';
 		</script>
 	</head>
 	<body>
-		<nav class="main-nav">
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li class="nav-dropdown">
-					<a href="/wiki" class="dropdown-toggle">Wiki ▼</a>
-					<div class="dropdown-content">
-						<a href="/wiki">📚 All Collections</a>
-						<a href="/planets">🪐 Planets</a>
-						<a href="/species">🧬 Species</a>
-						<a href="/resources">⚡ Resources</a>
-						<a href="/places">🏛️ Places</a>
-						<a href="/features">🌋 Features</a>
-						<a href="/technology">🔬 Technology</a>
-						<a href="/concepts">💭 Concepts</a>
-						<a href="/relationships">🔗 Relationships</a>
-						<a href="/lore-connections">📖 Lore Connections</a>
-						<a href="/organizations">🏛️ Organizations</a>
-					</div>
-				</li>
-				<li><a href="/about">About</a></li>
-			</ul>
-		</nav>
 		<div class="stars-container">
-			<div id="starsSmall" class="stars-small"></div>
-			<div class="stars-medium"></div>
-			<div class="stars-large"></div>
+			<div id="stars-small" class="stars-small"></div>
+			<div id="stars-medium" class="stars-medium"></div>
+			<div id="stars-large" class="stars-large"></div>
 		</div>
+		<nav class="navbar">
+			<div class="navbar-left">
+				<a href="/" class="site-title">Distant Worlds</a>
+			</div>
+			<div class="navbar-right">
+				<ul>
+					<li class="nav-dropdown">
+						<a href="/wiki" class="dropdown-toggle">Wiki ▼</a>
+						<div class="dropdown-content">
+							<ul>
+								<li><a href="/wiki">Wiki Hub</a></li>
+								<li><a href="/planets">🪐 Planets</a></li>
+								<li><a href="/species">🧬 Species</a></li>
+								<li><a href="/resources">⚡ Resources</a></li>
+								<li><a href="/places">🏛️ Places</a></li>
+								<li><a href="/features">🌋 Features</a></li>
+								<li><a href="/technology">🔬 Technology</a></li>
+								<li><a href="/concepts">💭 Concepts</a></li>
+								<li><a href="/relationships">🔗 Relationships</a></li>
+								<li><a href="/lore-connections">📖 Lore Connections</a></li>
+								<li><a href="/organizations">🏛️ Organizations</a></li>
+							</ul>
+						</div>
+					</li>
+					<li><a href="/about">About</a></li>
+				</ul>
+			</div>
+		</nav>
 		<slot />
 		<script>
 			document.addEventListener('DOMContentLoaded', function () {

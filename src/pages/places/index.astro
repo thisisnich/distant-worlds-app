@@ -6,9 +6,9 @@ import '../../styles/wiki.css';
 const places = await getCollection('places');
 ---
 
-<BaseLayout title="Places - Distant Worlds">
+<BaseLayout title="Places - Distant Worlds" currentPath={Astro.url.pathname}>
     <div class="wiki-container">
-        <a href="/" class="back-button">←</a>
+        
         <div class="wiki-content">
             <h1>Places</h1>
             <p>Discover significant locations, landmarks, and regions throughout the Distant Worlds universe.</p>

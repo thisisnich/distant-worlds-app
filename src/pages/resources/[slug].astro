@@ -24,9 +24,8 @@ const title = resource.slug.split('_').map(word =>
 const images = resource.data.images || [];
 ---
 
-<BaseLayout title={`${title} - Distant Worlds Resources`}>
+<BaseLayout title={`${title} - Distant Worlds Resources`} currentPath={Astro.url.pathname}>
     <div class="wiki-container">
-        <a href="/resources" class="back-button">←</a>
         <div class="wiki-content">
             {images.length > 0 && (
                 <div class="image-gallery">

@@ -24,9 +24,8 @@ const title = concept.slug.split('_').map(word =>
 const images = concept.data.images || [];
 ---
 
-<BaseLayout title={`${title} - Distant Worlds Concepts`}>
+<BaseLayout title={`${title} - Distant Worlds Concepts`} currentPath={Astro.url.pathname}>
     <div class="wiki-container">
-        <a href="/concepts" class="back-button">←</a>
         <div class="wiki-content">
             {images.length > 0 && (
                 <div class="image-gallery">

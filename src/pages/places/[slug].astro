@@ -24,9 +24,8 @@ const title = place.slug.split('_').map(word =>
 const images = place.data.images || [];
 ---
 
-<BaseLayout title={place.data.name}>
+<BaseLayout title={place.data.name} currentPath={Astro.url.pathname}>
     <div class="wiki-container">
-        <a href="/places" class="back-button">←</a>
         <div class="wiki-content">
             {images.length > 0 && (
                 <div class="image-gallery">

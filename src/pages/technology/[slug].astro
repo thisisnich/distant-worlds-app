@@ -24,9 +24,8 @@ const title = tech.slug.split('_').map(word =>
 const images = tech.data.images || [];
 ---
 
-<BaseLayout title={`${title} - Distant Worlds Technology`}>
+<BaseLayout title={`${title} - Distant Worlds Technology`} currentPath={Astro.url.pathname}>
     <div class="wiki-container">
-        <a href="/technology" class="back-button">←</a>
         <div class="wiki-content">
             {images.length > 0 && (
                 <div class="image-gallery">

@@ -6,9 +6,9 @@ import '../../styles/wiki.css';
 const relationships = await getCollection('relationships');
 ---
 
-<BaseLayout title="Relationships - Distant Worlds">
+<BaseLayout title="Relationships - Distant Worlds" currentPath={Astro.url.pathname}>
     <div class="wiki-container">
-        <a href="/" class="back-button">←</a>
+        
         <div class="wiki-content">
             <h1>Relationships</h1>
             <p>Explore the complex relationships and symbioses between different entities in the Distant Worlds universe.</p>

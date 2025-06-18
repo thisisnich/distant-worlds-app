@@ -24,9 +24,8 @@ const title = relationship.slug.split('_').map(word =>
 const images = relationship.data.images || [];
 ---
 
-<BaseLayout title={`${title} - Distant Worlds Relationships`}>
+<BaseLayout title={`${title} - Distant Worlds Relationships`} currentPath={Astro.url.pathname}>
     <div class="wiki-container">
-        <a href="/relationships" class="back-button">←</a>
         <div class="wiki-content">
             {images.length > 0 && (
                 <div class="image-gallery">

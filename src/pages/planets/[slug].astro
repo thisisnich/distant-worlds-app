@@ -199,7 +199,7 @@ const planetImages = planet.frontmatter.images || [];
 
 ---
 
-<BaseLayout title={`Claim ${planet.frontmatter.name} - Distant Worlds`}>
+<BaseLayout title={`Claim ${planet.frontmatter.name} - Distant Worlds`} currentPath={Astro.url.pathname}>
     <style>
         .claim-container {
             max-width: 1200px;
@@ -467,13 +467,13 @@ const planetImages = planet.frontmatter.images || [];
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(48, 54, 61, 0.6);
             color: white;
-            padding: 6px 12px;
-            border-radius: 12px;
+            padding: 3px 8px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 700;
             transition: all 0.3s ease;
             z-index: 1000;
-            font-size: 0.9em;
+            font-size: 0.8em;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -565,8 +565,6 @@ const planetImages = planet.frontmatter.images || [];
         }
 
     </style>
-
-    <a href="/" class="back-button">←</a>
 
     <div class="claim-container">
         {planetImages.length > 0 && (
