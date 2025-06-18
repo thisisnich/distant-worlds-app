@@ -19,7 +19,7 @@
 
 .back-button {
     position: fixed;
-    top: 40px;
+    top: 10px;
     left: 30px;
     background: rgba(22, 27, 34, 0.8);
     backdrop-filter: blur(12px);
@@ -174,5 +174,9 @@
     
     .wiki-content h1 {
         font-size: 2em;
+    }
+
+    .back-button {
+        top: 40px;
     }
 } 
