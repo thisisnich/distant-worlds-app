@@ -19,19 +19,22 @@
 
 .back-button {
     position: fixed;
-    top: 20px;
-    left: 2rem;
+    top: 10px;
+    left: 30px;
     background: rgba(22, 27, 34, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(48, 54, 61, 0.6);
     color: white;
-    padding: 12px 20px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 12px;
-    text-decoration: none;
-    font-weight: 600;
     transition: all 0.3s ease;
     z-index: 1000;
+    font-size: 1.8em;
 }
 
 .back-button:hover {
@@ -105,6 +108,61 @@
     transform: translateY(-1px);
 }
 
+.image-gallery {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.single-image {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-images img {
+    width: 100%;
+    flex-shrink: 0;
+    display: block;
+    border-radius: 12px;
+}
+
+.carousel-nav {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.nav-dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s ease;
+}
+
+.nav-dot.active {
+    background: #00d4ff;
+}
+
 @media (max-width: 768px) {
     .wiki-container {
         padding: 1rem;
@@ -116,5 +174,9 @@
     
     .wiki-content h1 {
         font-size: 2em;
+    }
+
+    .back-button {
+        top: 40px;
     }
 } 

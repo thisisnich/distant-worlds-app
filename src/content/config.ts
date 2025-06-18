@@ -11,6 +11,7 @@ const planetsCollection = defineCollection({
     atmosphere_type: z.string().optional(),
     habitability: z.string().optional(),
     primary_resources: z.array(z.string()).optional(),
+    images: z.array(z.string()).optional(),
   }),
 });
 
@@ -25,6 +26,7 @@ const speciesCollection = defineCollection({
     description: z.string(),
     classification: z.string().optional(),
     habitat: z.string().optional(),
+    images: z.array(z.string()).optional(),
   }),
 });
 
@@ -39,6 +41,7 @@ const resourcesCollection = defineCollection({
     description: z.string(),
     rarity: z.string().optional(),
     uses: z.array(z.string()).optional(),
+    images: z.array(z.string()).optional(),
   }),
 });
 
@@ -51,6 +54,7 @@ const relationshipsCollection = defineCollection({
     type: z.string().optional(),
     participants: z.array(z.string()).optional(),
     description: z.string(),
+    images: z.array(z.string()).optional(),
   }),
 });
 
@@ -64,6 +68,7 @@ const placesCollection = defineCollection({
     description: z.string(),
     type: z.string().optional(),
     significance: z.string().optional(),
+    images: z.array(z.string()).optional(),
   }),
 });
 
@@ -76,6 +81,7 @@ const featuresCollection = defineCollection({
     planet: z.string().optional(),
     type: z.string().optional(),
     description: z.string(),
+    images: z.array(z.string()).optional(),
   }),
 });
 
@@ -89,6 +95,7 @@ const technologyCollection = defineCollection({
     description: z.string(),
     type: z.string().optional(),
     complexity: z.string().optional(),
+    images: z.array(z.string()).optional(),
   }),
 });
 
@@ -101,6 +108,7 @@ const conceptsCollection = defineCollection({
     origin: z.string(),
     description: z.string(),
     category: z.string().optional(),
+    images: z.array(z.string()).optional(),
   }),
 });
 
@@ -113,6 +121,7 @@ const loreConnectionsCollection = defineCollection({
     type: z.string().optional(),
     description: z.string(),
     entities: z.array(z.string()).optional(),
+    images: z.array(z.string()).optional(),
   }),
 });
 
@@ -128,6 +137,7 @@ const organizationsCollection = defineCollection({
     purpose: z.string().optional(),
     membership: z.string().optional(),
     influence: z.string().optional(),
+    images: z.array(z.string()).optional(),
   }),
 });
 

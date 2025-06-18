@@ -6,9 +6,9 @@ import '../../styles/wiki.css';
 const concepts = await getCollection('concepts');
 ---
 
-<BaseLayout title="Concepts - Distant Worlds">
+<BaseLayout title="Concepts - Distant Worlds" currentPath={Astro.url.pathname}>
     <div class="wiki-container">
-        <a href="/" class="back-button">← Back to Home</a>
+        
         <div class="wiki-content">
             <h1>Concepts</h1>
             <p>Understand important ideas, theories, and phenomena that shape the Distant Worlds universe.</p>

@@ -6,9 +6,9 @@ import '../../styles/wiki.css';
 const loreConnections = await getCollection('lore_connections');
 ---
 
-<BaseLayout title="Lore Connections - Distant Worlds">
+<BaseLayout title="Lore Connections - Distant Worlds" currentPath={Astro.url.pathname}>
     <div class="wiki-container">
-        <a href="/" class="back-button">← Back to Home</a>
+        
         <div class="wiki-content">
             <h1>Lore Connections</h1>
             <p>Discover the intricate web of connections that bind the Distant Worlds universe together.</p>

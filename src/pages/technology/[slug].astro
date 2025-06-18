@@ -20,13 +20,63 @@ const { Content } = await tech.render();
 const title = tech.slug.split('_').map(word => 
     word.charAt(0).toUpperCase() + word.slice(1)
 ).join(' ');
+
+const images = tech.data.images || [];
 ---
 
-<BaseLayout title={`${title} - Distant Worlds Technology`}>
+<BaseLayout title={`${title} - Distant Worlds Technology`} currentPath={Astro.url.pathname}>
     <div class="wiki-container">
-        <a href="/technology" class="back-button">← Back to Technology</a>
         <div class="wiki-content">
+            {images.length > 0 && (
+                <div class="image-gallery">
+                    {images.length > 1 ? (
+                        <div class="carousel-container">
+                            <div class="carousel-images">
+                                {images.map(src => <img src={src} alt={title} />)}
+                            </div>
+                            <div class="carousel-nav">
+                                {images.map((_, index) => (
+                                    <button class="nav-dot" data-slide={index}></button>
+                                ))}
+                            </div>
+                        </div>
+                    ) : (
+                        <img src={images[0]} alt={title} class="single-image"/>
+                    )}
+                </div>
+            )}
             <Content />
         </div>
     </div>
-</BaseLayout> 
+</BaseLayout>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        const carouselContainers = document.querySelectorAll('.carousel-container');
+        carouselContainers.forEach(container => {
+            const images = container.querySelector('.carousel-images');
+            const dots = container.querySelectorAll('.nav-dot');
+            let currentSlide = 0;
+
+            const updateCarousel = () => {
+                images.style.transform = `translateX(-${currentSlide * 100}%)`;
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            };
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', (e) => {
+                    currentSlide = parseInt(e.target.dataset.slide);
+                    updateCarousel();
+                });
+            });
+
+            updateCarousel(); // Initialize carousel
+        });
+    });
+</script> 
