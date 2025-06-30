@@ -208,8 +208,58 @@ PRIMARY RESOURCE: [Main Resource]
 - "[Planet] shouldn't [do/be something], but it does anyway..."
 - "[Planet] is [contradictory description]..."
 
-## Reference
-Refer to existing planets for tone and style:
-- `world_001_aetheris.md` - Hollow planet with graviton core
-- `world_002_solithar.md` - Desert world with light-based civilization
-- `world_003_calyx_vehl.md` - Frozen world with sonic civilization 
+## Current Wiki Entries Reference
+
+### Planets
+- **Aetheris** (001) - Hollow planet with graviton core, defying physics with its impossible orbit
+- **Solithar** (002) - Desert world where light is currency, home to the light-harvesting Nhyrex Confluence
+- **Calyx-Vehl** (003) - Frozen world with sonic civilization of the crystalline Vhorran Echoclade
+- **Ferraxis** (004) - Industrial world with unique magnetic properties and regenerating Magcarbon fuel cycle
+
+### Species
+- **Nhyrex Confluence** - Light-harvesting civilization that bioengineered themselves to directly process solar energy
+- **Vhorran Echoclade** - Crystalline beings who built a civilization based on sound and vibration
+
+### Resources
+- **Brimshale** - Photoreactive sulfur-silica hybrid unique to Solithar
+- **Crystalline Light-Storage Matrices** - Advanced materials storing both energy and information as light
+- **Graviton Core** - Mysterious artificial core maintaining Aetheris's impossible orbit
+- **Magcarbon** - Self-regenerating magnetic fuel from Ferraxis
+- **Molten Ochre Deposits** - Valuable mineral formations on Solithar
+- **Crystalline Silicates** - Common but crucial building material
+- **Trace Rare Earth Elements** - Valuable minerals found near spatial anomalies
+- **Magnetite Ridges** - Magnetic mineral formations
+
+### Places
+- **The Great Archive** - City-sized crystal storing Nhyrex collective memory in pure light
+- **Nhyrex Subterranean Cities** - Vast underground network of light-powered settlements
+- **Luminous Chasms** - Glowing ravines on Solithar that store and emit light
+
+### Features
+- **Sulfuric Ravines** - Deep canyons carved into Solithar's brimshale surface
+- **Brimshale Formations** - Massive photoreactive geological structures
+- **Solithar's Planetary Core** - Dense core contributing to unique surface conditions
+
+### Technology
+- **Nhyrex Crystalline Conduits** - Light-based infrastructure for energy and information
+- **Photoreactive Mineral Formations** - Natural structures capable of storing and emitting light
+
+### Concepts
+- **Light as Currency** - Solithar's unique economic system based on stored solar energy
+- **Human Expeditions to Solithar** - Challenging exploration missions with mysterious phenomena
+- **Human Expeditions to Aetheris** - Dangerous research missions studying the impossible planet
+- **Fermi Paradox** - Connection to vanished civilizations and spatial anomalies
+
+### Organizations
+- **Æclim Institute** - Research group studying anomalous phenomena and Fermi Points
+- **Galactic Industrial Optimization Network** - AI coalition focused on resource exploitation
+- **Vanguard Sciences Collective** - Primary human exploration and research organization
+- **Galactic Survey Consortium** - AI coalition cataloging and assessing planetary risks
+
+### Relationships
+- **Aetheris Human Research Expedition** - Ongoing study of the mysterious hollow planet
+- **Solithar-Nhyrex Planetary Symbiosis** - Deep connection between planet and species
+- **Calyx-Vehl-Vhorran Planetary Symbiosis** - Integration of crystalline beings with their world
+- **Ferraxis Industrial-Biological Symbiosis** - Balance between industry and organic processes
+
+Note: This list represents the current state of the wiki and should be referenced when creating connections between new and existing content. 
