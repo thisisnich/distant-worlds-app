@@ -514,6 +514,15 @@ import '../styles/nav.css';
 				box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
 			}
 
+			/* Ensure dropdown content is hidden by default */
+			.nav-dropdown .dropdown-content {
+				display: none;
+			}
+
+			.nav-dropdown.active .dropdown-content {
+				display: block;
+			}
+
 		</style>
 		<script is:inline>
 			console.log('Script loaded and running');
@@ -603,7 +612,7 @@ import '../styles/nav.css';
 								<li><a href="/technology">🔬 Technology</a></li>
 								<li><a href="/concepts">💭 Concepts</a></li>
 								<li><a href="/relationships">🔗 Relationships</a></li>
-								<li><a href="/lore-connections">📖 Lore Connections</a></li>
+								<li><a href="/lore-connections">📖 Connections</a></li>
 								<li><a href="/organizations">🏛️ Organizations</a></li>
 							</ul>
 						</div>

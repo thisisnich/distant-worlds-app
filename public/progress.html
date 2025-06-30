@@ -87,6 +87,8 @@
             <li>Refined Flexbox and item spacing for Wiki dropdown. Removed `flex-basis` from dropdown links, added `margin-right` to create spacing, adjusted padding, and set `overflow-x: hidden` on the container in `src/styles/nav.css` to resolve persistent horizontal overflow and ensure dynamic wrapping (2024-07-31, Version 2.43).</li>
             <li>Further refined Flexbox for Wiki dropdown items. Added `gap` to `.dropdown-content`, removed `margin-right` from `.dropdown-content a`, and set `min-width: 0` on `.dropdown-content a` in `src/styles/nav.css` to ensure proper wrapping and eliminate horizontal overflow (2024-07-31, Version 2.44).</li>
             <li>Finalized Flexbox for Wiki dropdown items. Set `flex: 1 1 auto;` and `max-width: calc(25% - 1rem);` on `.dropdown-content a` in `src/styles/nav.css` to ensure optimal wrapping behavior and eliminate horizontal overflow (2024-07-31, Version 2.45).</li>
+            <li>Fixed Wiki dropdown opening on load. Added a CSS rule to `src/layouts/BaseLayout.astro` to ensure `.dropdown-content` is hidden by default and only displayed when the parent `.nav-dropdown` has the `active` class (2024-07-31, Version 2.46).</li>
+            <li>Enhanced Wiki dropdown button hover effect. Modified `src/styles/nav.css` to apply padding and border-radius to all main navigation links and specifically added a background color on hover to the Wiki dropdown toggle, ensuring the entire button area responds visually (2024-07-31, Version 2.47).</li>
         </ul>
     </ul>
     <h2>Next Steps</h2>
