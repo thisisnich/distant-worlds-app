@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/wiki.css';
+import { type CollectionEntry, render } from 'astro:content';
 
 interface SpeciesModule {
     default: any;
@@ -14,15 +15,20 @@ export async function getStaticPaths() {
         const slug = path.split('/').pop()?.replace('.md', '') || '';
         return {
             params: { slug },
-            props: { species, slug },
+            props: { species: species, slug },
         };
     });
 }
 
-const { species, slug } = Astro.props as { species: SpeciesModule; slug: string };
+interface Props {
+    species: CollectionEntry<'species'>;
+    slug: string;
+}
+
+const { species, slug } = Astro.props as Props;
 
 // Get the full compiled markdown content
-const fullContent = await species.compiledContent();
+const { Content } = await render(species);
 
 // Generate a title from the slug
 const title = slug.split('_').map(word => 
@@ -35,7 +41,14 @@ const title = slug.split('_').map(word =>
 
     <div class="wiki-container">
         <div class="wiki-content">
-            <div set:html={fullContent} />
+            {species.data.photos && species.data.photos.length > 0 && (
+                <div class="photo-gallery">
+                    {species.data.photos.map(photo => (
+                        <img src={photo} alt={title} class="content-image" />
+                    ))}
+                </div>
+            )}
+            <Content />
         </div>
     </div>
 </BaseLayout> 

@@ -117,4 +117,25 @@
     .wiki-content h1 {
         font-size: 2em;
     }
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.content-image {
+    width: 100%;
+    height: 200px; /* Or auto, depending on desired aspect ratio */
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.content-image:hover {
+    transform: scale(1.03);
 } 

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { type CollectionEntry, render } from 'astro:content';
 
 interface LoreConnectionModule {
     default: any;
@@ -13,15 +14,20 @@ export async function getStaticPaths() {
         const slug = path.split('/').pop()?.replace('.md', '') || '';
         return {
             params: { slug },
-            props: { loreConnection, slug },
+            props: { loreConnection: loreConnection, slug },
         };
     });
 }
 
-const { loreConnection, slug } = Astro.props as { loreConnection: LoreConnectionModule; slug: string };
+interface Props {
+    loreConnection: CollectionEntry<'lore_connections'>;
+    slug: string;
+}
+
+const { loreConnection, slug } = Astro.props as Props;
 
 // Get the full compiled markdown content
-const fullContent = await loreConnection.compiledContent();
+const { Content } = await render(loreConnection);
 
 // Generate a title from the slug
 const title = slug.split('_').map(word => 
@@ -141,7 +147,14 @@ const title = slug.split('_').map(word =>
 
     <div class="lore-connection-container">
         <div class="lore-connection-content">
-            <div set:html={fullContent} />
+            {loreConnection.data.photos && loreConnection.data.photos.length > 0 && (
+                <div class="photo-gallery">
+                    {loreConnection.data.photos.map(photo => (
+                        <img src={photo} alt={title} class="content-image" />
+                    ))}
+                </div>
+            )}
+            <Content />
         </div>
     </div>
 </BaseLayout> 

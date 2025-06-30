@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import '../../styles/wiki.css';
 
 export async function getStaticPaths() {
@@ -13,7 +13,11 @@ export async function getStaticPaths() {
     });
 }
 
-const { relationship } = Astro.props;
+interface Props {
+    relationship: CollectionEntry<'relationships'>;
+}
+
+const { relationship } = Astro.props as Props;
 const { Content } = await relationship.render();
 
 // Generate a title from the slug
@@ -26,6 +30,13 @@ const title = relationship.slug.split('_').map(word =>
     <div class="wiki-container">
         <a href="/relationships" class="back-button">← Back to Relationships</a>
         <div class="wiki-content">
+            {relationship.data.photos && relationship.data.photos.length > 0 && (
+                <div class="photo-gallery">
+                    {relationship.data.photos.map(photo => (
+                        <img src={photo} alt={title} class="content-image" />
+                    ))}
+                </div>
+            )}
             <Content />
         </div>
     </div>

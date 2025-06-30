@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import '../../styles/wiki.css';
 
 export async function getStaticPaths() {
@@ -13,7 +13,11 @@ export async function getStaticPaths() {
     });
 }
 
-const { feature } = Astro.props;
+interface Props {
+    feature: CollectionEntry<'features'>;
+}
+
+const { feature } = Astro.props as Props;
 const { Content } = await feature.render();
 
 // Generate a title from the slug
@@ -26,6 +30,13 @@ const title = feature.slug.split('_').map(word =>
     <div class="wiki-container">
         <a href="/features" class="back-button">← Back to Features</a>
         <div class="wiki-content">
+            {feature.data.photos && feature.data.photos.length > 0 && (
+                <div class="photo-gallery">
+                    {feature.data.photos.map(photo => (
+                        <img src={photo} alt={title} class="content-image" />
+                    ))}
+                </div>
+            )}
             <Content />
         </div>
     </div>
