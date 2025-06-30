@@ -75,4 +75,5 @@ But beneath the industrial success lies a growing concern. The planet's magnetic
 
 ### Organizations
 *   [Galactic Industrial Optimization Network](/organizations/galactic_industrial_optimization_network) - Highly valuable, but currently deemed economically unviable due to human resistance and Vanguard Sciences Collective support
-*   [Ferraxis Miners Guild](/organizations/example_miners_guild) - Dominant mining consortium on Ferraxis, controlling mineral extraction operations
+*   [Ferraxis Miners Guild](/organizations/ferraxis_miners_guild) - Dominant mining consortium on Ferraxis, controlling mineral extraction operations.
+*   [The Resource Coalition](/organizations/the_resource_coalition) - A powerful economic alliance that includes the Ferraxis Miners Guild, focused on optimizing resource extraction and distribution across key systems.

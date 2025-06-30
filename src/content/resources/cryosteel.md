@@ -68,7 +68,7 @@ Recent tensions have emerged over Cryosteel allocation priorities. Military vess
 ### Organizations
 *   [Galactic Industrial Optimization Network](/organizations/galactic_industrial_optimization_network)
 *   [The Vanguard Sciences Collective](/organizations/vanguard_sciences_collective)
-*   [Ferraxis Miners Guild](/organizations/example_miners_guild)
+*   [Ferraxis Miners Guild](/organizations/ferraxis_miners_guild)
 
 ### Concepts
 *   [Dual-Band Industrial Metropolis](/concepts/dual_band_industrial_metropolis)

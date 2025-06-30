@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import '../../styles/wiki.css';
-import { type CollectionEntry, render } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 
 interface SpeciesModule {
     default: any;
@@ -9,13 +9,12 @@ interface SpeciesModule {
 }
 
 export async function getStaticPaths() {
-    const speciesFiles = Object.entries(import.meta.glob<SpeciesModule>('../../content/species/*.md', { eager: true }));
+    const species = await getCollection('species');
 
-    return speciesFiles.map(([path, species]) => {
-        const slug = path.split('/').pop()?.replace('.md', '') || '';
+    return species.map((s) => {
         return {
-            params: { slug },
-            props: { species: species, slug },
+            params: { slug: s.slug },
+            props: { species: s },
         };
     });
 }
@@ -25,13 +24,13 @@ interface Props {
     slug: string;
 }
 
-const { species, slug } = Astro.props as Props;
+const { species } = Astro.props as Props;
 
 // Get the full compiled markdown content
-const { Content } = await render(species);
+const { Content } = await species.render();
 
 // Generate a title from the slug
-const title = slug.split('_').map(word => 
+const title = species.slug.split('_').map(word => 
     word.charAt(0).toUpperCase() + word.slice(1)
 ).join(' ');
 ---
@@ -41,7 +40,7 @@ const title = slug.split('_').map(word =>
 
     <div class="wiki-container">
         <div class="wiki-content">
-            {species.data.photos && species.data.photos.length > 0 && (
+            {species.data.photos && Array.isArray(species.data.photos) && species.data.photos.length > 0 && (
                 <div class="photo-gallery">
                     {species.data.photos.map(photo => (
                         <img src={photo} alt={title} class="content-image" />
