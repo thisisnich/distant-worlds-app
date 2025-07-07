@@ -147,7 +147,7 @@ const title = slug.split('_').map(word =>
 
     <div class="lore-connection-container">
         <div class="lore-connection-content">
-            {loreConnection.data.photos && loreConnection.data.photos.length > 0 && (
+            {loreConnection.data && Array.isArray(loreConnection.data.photos) && loreConnection.data.photos.length > 0 && (
                 <div class="photo-gallery">
                     {loreConnection.data.photos.map(photo => (
                         <img src={photo} alt={title} class="content-image" />

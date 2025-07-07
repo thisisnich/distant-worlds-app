@@ -1,6 +1,7 @@
 ---
 technology_id: orbital_ring_architecture
 name: Orbital Ring Architecture
+origin: KIII09-2-0808
 category: Megastructure engineering
 development_level: Advanced—represents humanity's greatest engineering achievement
 applications:

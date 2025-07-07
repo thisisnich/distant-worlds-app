@@ -1,6 +1,7 @@
 ---
 resource_id: "plasma-crystals"
 name: "Plasma Crystals"
+origin: "KIII09-2-0808"
 type: "Exotic energy storage material"
 rarity: "Rare - requires extreme magnetic field and temperature conditions"
 primary_source: "KIII09-2-0808 Sector 6 specialized extraction"
@@ -20,7 +21,7 @@ Plasma Crystals represent one of the most exotic and valuable materials in known
 
 ## Formation Process
 
-These crystals form in specialized extraction zones deep within KIII09-2-0808, where superheated plasma from the planet’s core is exposed to intense magnetic fields. The process involves:
+These crystals form in specialized extraction zones deep within KIII09-2-0808, where superheated plasma from the planet's core is exposed to intense magnetic fields. The process involves:
 
 - Sustained **temperatures exceeding 3,200°C**
 - Magnetic field intensities above **50,000 gauss**

@@ -1,6 +1,7 @@
 ---
 resource_id: "ringsoil"
 name: "Ringsoil"
+origin: "KIII09-2-0808"
 type: "Mineral-rich soil (industrial byproduct)"
 rarity: "Unique to KIII09-2-0808"
 primary_source: "Atmospheric processing farms, Sectors 5 & 8"

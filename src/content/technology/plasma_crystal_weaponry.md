@@ -1,6 +1,7 @@
 ---
 technology_id: plasma_crystal_weaponry
 name: Plasma Crystal Weaponry
+origin: KIII09-2-0808
 category: Military technology
 development_level: Advanced—exclusive to KIII09-2-0808
 applications:
