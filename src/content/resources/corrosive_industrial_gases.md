@@ -4,6 +4,7 @@ name: "Corrosive Industrial Gases"
 type: "Specialized chemical compounds"
 rarity: "Common on KIII09-2-0808, rare elsewhere"
 primary_source: "KIII09-2-0808 atmospheric processing facilities"
+origin: "KIII09-2-0808"
 formation_process: "Industrial byproduct extraction and refinement"
 applications:
   - Metal surface treatment and etching
