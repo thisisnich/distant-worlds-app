@@ -169,5 +169,8 @@ Refer to existing planets for examples:
 - `world_001_aetheris.md` - Hollow planet with graviton core
 - `world_002_solithar.md` - Desert world with light-based civilization  
 - `world_003_calyx_vehl.md` - Frozen world with sonic civilization
+- `world_004_ferraxis.md` - Volcanic world with tectonic life
+- `world_005_thallasos.md` - Ocean world with deep-sea organisms
+- `world_006_KIII09-2-0808.md` - Gas giant with atmospheric ecosystems
 
 This template ensures consistency while allowing creative freedom within the established format. 
